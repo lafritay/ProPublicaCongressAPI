@@ -45,6 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="Contracts\Chamber.cs" />
+    <Compile Include="Contracts\CurrentMember.cs" />
+    <Compile Include="Contracts\NewMember.cs" />
+    <Compile Include="Contracts\NewMembersContainer.cs" />
+    <Compile Include="InternalModels\CurrentMember.cs" />
+    <Compile Include="InternalModels\NewMember.cs" />
+    <Compile Include="InternalModels\NewMembersContainer.cs" />
     <Compile Include="ProPublicaCongressApiClient.cs" />
     <Compile Include="ApiResponse.cs" />
     <Compile Include="Contracts\Member.cs" />

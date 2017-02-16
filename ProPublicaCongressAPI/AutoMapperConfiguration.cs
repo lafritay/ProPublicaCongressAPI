@@ -31,6 +31,11 @@ namespace ProPublicaCongressAPI
                     x.CreateMap<InternalModels.MemberCommittee, Contracts.MemberCommittee>();
                     x.CreateMap<InternalModels.MemberRole, Contracts.MemberRole>();
                     x.CreateMap<InternalModels.Member, Contracts.Member>();
+
+                    x.CreateMap<InternalModels.NewMember, Contracts.NewMember>();
+                    x.CreateMap<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>();
+
+                    x.CreateMap<InternalModels.CurrentMember, Contracts.CurrentMember>();
                 });
 
             }

@@ -18,6 +18,7 @@ namespace ProPublicaCongressAPI
         private const string specificMemberUrl = "v1/members/{0}.json"; // 0 = member-id
         private const string newMembersUrl = "v1/members/new.json";
         private const string currentMembersUrl = "v1/members/{0}/{1}/current.json"; // 0 = chamber, 1 = state
+        private const string currentHouseMembersUrl = "v1/members/{0}/{1}/{2}/current.json"; // 0 = chamber, 1 = state, 2 = district
         private const string memberVotesUrl = "v1/members/{0}/votes.json"; // 0 = member-id
         private const string compareMemberVotesUrl = "v1/members/{0}/votes/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
         private const string compareMemberBillsUrl = "v1/members/{0}/bills/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
@@ -41,6 +42,49 @@ namespace ProPublicaCongressAPI
         {
             this.apiKey = apiKey;
             AutoMapperConfiguration.Initialize();
+        }
+
+        public async Task<IReadOnlyCollection<Contracts.CurrentMember>> GetCurrentMembers(Chamber chamber, string state, int? district = null)
+        {
+            string url = apiBaseUrl;
+
+            if(district.HasValue)
+            {
+                url += String.Format(currentHouseMembersUrl, chamber.ToString().ToLower(), state, district);
+            }
+            else
+            {
+                url += String.Format(currentMembersUrl, chamber.ToString().ToLower(), state);
+            }
+            
+            var result = await GetDataAsync<InternalModels.CurrentMember>(url);
+
+            if (result == null || result.Results == null || result.Results.Count == 0)
+            {
+                return null;
+            }
+
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                IReadOnlyCollection<InternalModels.CurrentMember>, 
+                IReadOnlyCollection<Contracts.CurrentMember>>(result.Results);
+
+            return contract;
+        }
+    
+        public async Task<Contracts.NewMembersContainer> GetNewMembers()
+        {
+            string url = apiBaseUrl + newMembersUrl;
+
+            var result = await GetDataAsync<InternalModels.NewMembersContainer>(url);
+
+            if (result == null || result.Results == null || result.Results.Count == 0)
+            {
+                return null;
+            }
+
+            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>(result.Results.ElementAt(0));
+
+            return contract;
         }
 
         /// <summary>
