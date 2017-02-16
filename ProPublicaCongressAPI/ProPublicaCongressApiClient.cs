@@ -2,6 +2,7 @@
 using ProPublicaCongressAPI.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -44,8 +45,39 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
-        public async Task<IReadOnlyCollection<Contracts.CurrentMember>> GetCurrentMembers(Chamber chamber, string state, int? district = null)
+        public async Task<Contracts.MemberVotesContainer> GetMemberVotesAsync(string memberId)
         {
+            if (String.IsNullOrWhiteSpace(memberId))
+            {
+                throw new ArgumentNullException("memberId", "Member ID is required.");
+            }
+
+            string url = apiBaseUrl + String.Format(memberVotesUrl, memberId);
+            
+            var result = await GetDataAsync<InternalModels.MemberVotesContainer>(url);
+
+            if (result == null || result.Results == null || result.Results.Count == 0)
+            {
+                return null;
+            }
+
+            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>(result.Results.ElementAt(0));
+
+            return contract;
+        }
+
+        public async Task<IReadOnlyCollection<Contracts.CurrentMember>> GetCurrentMembersAsync(Chamber chamber, string state, int? district = null)
+        {
+            if(chamber == Chamber.Unknown)
+            {
+                throw new ArgumentException("Chamber must be 'House' or 'Senate'.");
+            }
+
+            if(String.IsNullOrWhiteSpace(state))
+            {
+                throw new ArgumentNullException("state", "State is required.");
+            }
+
             string url = apiBaseUrl;
 
             if(district.HasValue)
@@ -71,7 +103,7 @@ namespace ProPublicaCongressAPI
             return contract;
         }
     
-        public async Task<Contracts.NewMembersContainer> GetNewMembers()
+        public async Task<Contracts.NewMembersContainer> GetNewMembersAsync()
         {
             string url = apiBaseUrl + newMembersUrl;
 
@@ -93,8 +125,13 @@ namespace ProPublicaCongressAPI
         /// <param name="congress">Number of Congress to query (ie. 2017 is the 115th Congress).</param>
         /// <param name="chamber">Chamber of Congress such as "house" or "senate".</param>
         /// <returns></returns>
-        public async Task<Contracts.MembersContainer> GetMembersAsync(int congress, string chamber)
+        public async Task<Contracts.MembersContainer> GetMembersAsync(int congress, Chamber chamber)
         {
+            if (chamber == Chamber.Unknown)
+            {
+                throw new ArgumentException("Chamber must be 'House' or 'Senate'.");
+            }
+
             string url = apiBaseUrl + String.Format(membersUrl, congress, chamber.ToString().ToLower());
 
             var result = await GetDataAsync<InternalModels.MembersContainer>(url);
@@ -116,6 +153,11 @@ namespace ProPublicaCongressAPI
         /// <returns>A specific Member of Congress.</returns>
         public async Task<Contracts.Member> GetMemberAsync(string memberId)
         {
+            if(String.IsNullOrWhiteSpace(memberId))
+            {
+                throw new ArgumentNullException("memberId", "Member ID is required.");
+            }
+
             string url = apiBaseUrl + String.Format(specificMemberUrl, memberId);
 
             var result = await GetDataAsync<InternalModels.Member>(url);
@@ -138,6 +180,7 @@ namespace ProPublicaCongressAPI
         /// <returns></returns>
         private async Task<ApiResponse<T>> GetDataAsync<T>(string url)
         {
+            Debug.Assert(!String.IsNullOrWhiteSpace(url));
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
             var membersJson = await httpClient.GetStringAsync(url);

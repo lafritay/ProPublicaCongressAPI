@@ -36,6 +36,24 @@ namespace ProPublicaCongressAPI
                     x.CreateMap<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>();
 
                     x.CreateMap<InternalModels.CurrentMember, Contracts.CurrentMember>();
+
+                    x.CreateMap<InternalModels.MemberVoteBill, Contracts.MemberVoteBill>();
+                    x.CreateMap<InternalModels.MemberVote, Contracts.MemberVote>()
+                        .ForMember(dest => dest.DateTimeVoted, opts => opts.ResolveUsing(source =>
+                        {
+                            string rawDateTimeVoted = source.DateVoted;
+
+                            if(!String.IsNullOrWhiteSpace(source.TimeVoted))
+                            {
+                                rawDateTimeVoted += " " + source.TimeVoted;
+                            }
+
+                            DateTime dateTimeVoted;
+                            DateTime.TryParse(rawDateTimeVoted, out dateTimeVoted);
+
+                            return dateTimeVoted;
+                        }));
+                    x.CreateMap<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>();
                 });
 
             }
