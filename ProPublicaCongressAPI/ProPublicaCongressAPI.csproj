@@ -46,7 +46,10 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="Contracts\Chamber.cs" />
+    <Compile Include="Contracts\CosponsorBillType.cs" />
     <Compile Include="Contracts\CurrentMember.cs" />
+    <Compile Include="Contracts\MemberBillCosponsored.cs" />
+    <Compile Include="Contracts\MemberBillsCosponsoredContainer.cs" />
     <Compile Include="Contracts\MemberBillSponsorshipComparison.cs" />
     <Compile Include="Contracts\MemberBillSponsorshipComparisonContainer.cs" />
     <Compile Include="Contracts\MemberVote.cs" />
@@ -56,6 +59,8 @@
     <Compile Include="Contracts\NewMember.cs" />
     <Compile Include="Contracts\NewMembersContainer.cs" />
     <Compile Include="InternalModels\CurrentMember.cs" />
+    <Compile Include="InternalModels\MemberBillCosponsored.cs" />
+    <Compile Include="InternalModels\MemberBillsCosponsoredContainer.cs" />
     <Compile Include="InternalModels\MemberBillSponsorshipComparison.cs" />
     <Compile Include="InternalModels\MemberBillSponsorshipComparisonContainer.cs" />
     <Compile Include="InternalModels\MemberVote.cs" />

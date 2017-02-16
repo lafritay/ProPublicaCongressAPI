@@ -59,6 +59,9 @@ namespace ProPublicaCongressAPI
 
                     x.CreateMap<InternalModels.MemberBillSponsorshipComparison, Contracts.MemberBillSponsorshipComparison>();
                     x.CreateMap<InternalModels.MemberBillSponsorshipComparisonContainer, Contracts.MemberBillSponsorshipComparisonContainer>();
+
+                    x.CreateMap<InternalModels.MemberBillCosponsored, Contracts.MemberBillCosponsored>();
+                    x.CreateMap<InternalModels.MemberBillsCosponsoredContainer, Contracts.MemberBillsCosponsoredContainer>();
                 });
 
             }

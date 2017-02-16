@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProPublicaCongressAPI
@@ -23,7 +22,7 @@ namespace ProPublicaCongressAPI
         private const string memberVotesUrl = "v1/members/{0}/votes.json"; // 0 = member-id
         private const string compareMemberVotesUrl = "v1/members/{0}/votes/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
         private const string compareMemberBillSponsorshipsUrl = "v1/members/{0}/bills/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
-        private const string memberCosponsoredBillsUrl = "v1/members/{0}/bills/{type}.json"; // 0 = member-id, 1 = type
+        private const string memberCosponsoredBillsUrl = "v1/members/{0}/bills/{1}.json"; // 0 = member-id, 1 = type
         private const string voteRollCallUrl = "v1/{0}/{1}/sessions/{2}/votes/{3}.json"; // 0 = congress, 1 = chamber, 2 = session-number, 3 = roll-call-number
         private const string votesByTypeUrl = "v1/{0}/{1}/votes/{2}.json"; // 0 = congress, 1 = chamber, 2 = vote-type
         private const string votesByDateUrl = "v1/{0}/votes/{1}/{2}.json"; // 0 = chamber, 1 = year, 2 = month
@@ -43,6 +42,22 @@ namespace ProPublicaCongressAPI
         {
             this.apiKey = apiKey;
             AutoMapperConfiguration.Initialize();
+        }
+
+        public async Task<Contracts.MemberBillsCosponsoredContainer> GetBillsCosponsoredByMember(string memberId, CosponsorBillType type)
+        {
+            if (String.IsNullOrWhiteSpace(memberId))
+            {
+                throw new ArgumentNullException("memberId", "Member ID is required.");
+            }
+
+            string url = apiBaseUrl + String.Format(memberCosponsoredBillsUrl, memberId, type.ToString().ToLower());
+
+            var contract = await GetAndMapSingleDataAsync<
+                InternalModels.MemberBillsCosponsoredContainer,
+                Contracts.MemberBillsCosponsoredContainer>(url);
+
+            return contract;
         }
 
         public async Task<Contracts.MemberBillSponsorshipComparisonContainer> CompareMemberBillSponsorships(string firstMemberId, string secondMemberId, int congress, Chamber chamber)
@@ -84,7 +99,7 @@ namespace ProPublicaCongressAPI
 
             return contract;
         }
-        
+
         public async Task<Contracts.MemberVotesContainer> GetMemberVotesAsync(string memberId)
         {
             if (String.IsNullOrWhiteSpace(memberId))
@@ -95,7 +110,7 @@ namespace ProPublicaCongressAPI
             string url = apiBaseUrl + String.Format(memberVotesUrl, memberId);
 
             var contract = await GetAndMapSingleDataAsync<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>(url);
-            
+
             return contract;
         }
 
