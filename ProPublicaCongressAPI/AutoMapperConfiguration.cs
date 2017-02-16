@@ -54,6 +54,11 @@ namespace ProPublicaCongressAPI
                             return dateTimeVoted;
                         }));
                     x.CreateMap<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>();
+
+                    x.CreateMap<InternalModels.MemberVoteComparison, Contracts.MemberVoteComparison>();
+
+                    x.CreateMap<InternalModels.MemberBillSponsorshipComparison, Contracts.MemberBillSponsorshipComparison>();
+                    x.CreateMap<InternalModels.MemberBillSponsorshipComparisonContainer, Contracts.MemberBillSponsorshipComparisonContainer>();
                 });
 
             }

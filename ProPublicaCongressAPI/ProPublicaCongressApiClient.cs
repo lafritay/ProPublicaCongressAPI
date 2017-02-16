@@ -22,7 +22,7 @@ namespace ProPublicaCongressAPI
         private const string currentHouseMembersUrl = "v1/members/{0}/{1}/{2}/current.json"; // 0 = chamber, 1 = state, 2 = district
         private const string memberVotesUrl = "v1/members/{0}/votes.json"; // 0 = member-id
         private const string compareMemberVotesUrl = "v1/members/{0}/votes/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
-        private const string compareMemberBillsUrl = "v1/members/{0}/bills/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
+        private const string compareMemberBillSponsorshipsUrl = "v1/members/{0}/bills/{1}/{2}/{3}.json"; // 0 = first-member-id, 1 = second-member-id, 2 = congress, 3 = chamber
         private const string memberCosponsoredBillsUrl = "v1/members/{0}/bills/{type}.json"; // 0 = member-id, 1 = type
         private const string voteRollCallUrl = "v1/{0}/{1}/sessions/{2}/votes/{3}.json"; // 0 = congress, 1 = chamber, 2 = session-number, 3 = roll-call-number
         private const string votesByTypeUrl = "v1/{0}/{1}/votes/{2}.json"; // 0 = congress, 1 = chamber, 2 = vote-type
@@ -45,6 +45,46 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
+        public async Task<Contracts.MemberBillSponsorshipComparisonContainer> CompareMemberBillSponsorships(string firstMemberId, string secondMemberId, int congress, Chamber chamber)
+        {
+            if (String.IsNullOrWhiteSpace(firstMemberId))
+            {
+                throw new ArgumentNullException("firstMemberId", "First Member ID is required.");
+            }
+
+            if (String.IsNullOrWhiteSpace(secondMemberId))
+            {
+                throw new ArgumentNullException("secondMemberId", "Second Member ID is required.");
+            }
+
+            string url = apiBaseUrl + String.Format(compareMemberBillSponsorshipsUrl, firstMemberId, secondMemberId, congress, chamber.ToString().ToLower());
+
+            var contract = await GetAndMapSingleDataAsync<
+                InternalModels.MemberBillSponsorshipComparisonContainer,
+                Contracts.MemberBillSponsorshipComparisonContainer>(url);
+
+            return contract;
+        }
+
+        public async Task<IReadOnlyCollection<MemberVoteComparison>> CompareMemberVotes(string firstMemberId, string secondMemberId, int congress, Chamber chamber)
+        {
+            if (String.IsNullOrWhiteSpace(firstMemberId))
+            {
+                throw new ArgumentNullException("firstMemberId", "First Member ID is required.");
+            }
+
+            if (String.IsNullOrWhiteSpace(secondMemberId))
+            {
+                throw new ArgumentNullException("secondMemberId", "Second Member ID is required.");
+            }
+
+            string url = apiBaseUrl + String.Format(compareMemberVotesUrl, firstMemberId, secondMemberId, congress, chamber.ToString().ToLower());
+
+            var contract = await GetAndMapMultipleDataAsync<InternalModels.MemberVoteComparison, Contracts.MemberVoteComparison>(url);
+
+            return contract;
+        }
+        
         public async Task<Contracts.MemberVotesContainer> GetMemberVotesAsync(string memberId)
         {
             if (String.IsNullOrWhiteSpace(memberId))
@@ -53,34 +93,27 @@ namespace ProPublicaCongressAPI
             }
 
             string url = apiBaseUrl + String.Format(memberVotesUrl, memberId);
+
+            var contract = await GetAndMapSingleDataAsync<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>(url);
             
-            var result = await GetDataAsync<InternalModels.MemberVotesContainer>(url);
-
-            if (result == null || result.Results == null || result.Results.Count == 0)
-            {
-                return null;
-            }
-
-            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.MemberVotesContainer, Contracts.MemberVotesContainer>(result.Results.ElementAt(0));
-
             return contract;
         }
 
         public async Task<IReadOnlyCollection<Contracts.CurrentMember>> GetCurrentMembersAsync(Chamber chamber, string state, int? district = null)
         {
-            if(chamber == Chamber.Unknown)
+            if (chamber == Chamber.Unknown)
             {
                 throw new ArgumentException("Chamber must be 'House' or 'Senate'.");
             }
 
-            if(String.IsNullOrWhiteSpace(state))
+            if (String.IsNullOrWhiteSpace(state))
             {
                 throw new ArgumentNullException("state", "State is required.");
             }
 
             string url = apiBaseUrl;
 
-            if(district.HasValue)
+            if (district.HasValue)
             {
                 url += String.Format(currentHouseMembersUrl, chamber.ToString().ToLower(), state, district);
             }
@@ -88,33 +121,17 @@ namespace ProPublicaCongressAPI
             {
                 url += String.Format(currentMembersUrl, chamber.ToString().ToLower(), state);
             }
-            
-            var result = await GetDataAsync<InternalModels.CurrentMember>(url);
 
-            if (result == null || result.Results == null || result.Results.Count == 0)
-            {
-                return null;
-            }
-
-            var contract = AutoMapperConfiguration.Mapper.Map<
-                IReadOnlyCollection<InternalModels.CurrentMember>, 
-                IReadOnlyCollection<Contracts.CurrentMember>>(result.Results);
+            var contract = await GetAndMapMultipleDataAsync<InternalModels.CurrentMember, Contracts.CurrentMember>(url);
 
             return contract;
         }
-    
+
         public async Task<Contracts.NewMembersContainer> GetNewMembersAsync()
         {
             string url = apiBaseUrl + newMembersUrl;
 
-            var result = await GetDataAsync<InternalModels.NewMembersContainer>(url);
-
-            if (result == null || result.Results == null || result.Results.Count == 0)
-            {
-                return null;
-            }
-
-            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>(result.Results.ElementAt(0));
+            var contract = await GetAndMapSingleDataAsync<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>(url);
 
             return contract;
         }
@@ -134,14 +151,7 @@ namespace ProPublicaCongressAPI
 
             string url = apiBaseUrl + String.Format(membersUrl, congress, chamber.ToString().ToLower());
 
-            var result = await GetDataAsync<InternalModels.MembersContainer>(url);
-
-            if (result == null || result.Results == null || result.Results.Count == 0)
-            {
-                return null;
-            }
-
-            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.MembersContainer, Contracts.MembersContainer>(result.Results.ElementAt(0));
+            var contract = await GetAndMapSingleDataAsync<InternalModels.MembersContainer, Contracts.MembersContainer>(url);
 
             return contract;
         }
@@ -153,21 +163,56 @@ namespace ProPublicaCongressAPI
         /// <returns>A specific Member of Congress.</returns>
         public async Task<Contracts.Member> GetMemberAsync(string memberId)
         {
-            if(String.IsNullOrWhiteSpace(memberId))
+            if (String.IsNullOrWhiteSpace(memberId))
             {
                 throw new ArgumentNullException("memberId", "Member ID is required.");
             }
 
             string url = apiBaseUrl + String.Format(specificMemberUrl, memberId);
 
-            var result = await GetDataAsync<InternalModels.Member>(url);
+            var contract = await GetAndMapSingleDataAsync<InternalModels.Member, Contracts.Member>(url);
+
+            return contract;
+        }
+
+        private async Task<IReadOnlyCollection<TInternal>> GetAndCheckInternalDataAsync<TInternal>(string url)
+        {
+            var result = await GetDataAsync<TInternal>(url);
 
             if (result == null || result.Results == null || result.Results.Count == 0)
             {
                 return null;
             }
 
-            var contract = AutoMapperConfiguration.Mapper.Map<InternalModels.Member, Contracts.Member>(result.Results.ElementAt(0));
+            return result.Results;
+        }
+
+        private async Task<TContract> GetAndMapSingleDataAsync<TInternal, TContract>(string url)
+        {
+            var result = await GetAndCheckInternalDataAsync<TInternal>(url);
+
+            if (result == null)
+            {
+                return default(TContract);
+            }
+
+            var contract = AutoMapperConfiguration.Mapper.Map<TInternal, TContract>(result.ElementAt(0));
+
+            return contract;
+        }
+
+        private async Task<IReadOnlyCollection<TContract>> GetAndMapMultipleDataAsync<TInternal, TContract>(string url)
+        {
+            var result = await GetAndCheckInternalDataAsync<TInternal>(url);
+
+            if (result == null)
+            {
+                return new List<TContract>().AsReadOnly();
+            }
+
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                IReadOnlyCollection<TInternal>,
+                IReadOnlyCollection<TContract>>(result);
 
             return contract;
         }
