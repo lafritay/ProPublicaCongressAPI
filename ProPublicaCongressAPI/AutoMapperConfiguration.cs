@@ -112,6 +112,27 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote))
                         .ForMember(dest => dest.DateLatestMajorAction, 
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
+
+                    x.CreateMap<InternalModels.SpecificBillDetailRelated, Contracts.SpecificBillDetailRelated>()
+                        .ForMember(dest => dest.DateIntroduced,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateLatestMajorAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
+                    x.CreateMap<InternalModels.SpecificBillDetailSubject, Contracts.SpecificBillDetailSubject>();
+                    x.CreateMap<InternalModels.SpecificBillDetailAmendment, Contracts.SpecificBillDetailAmendment>()
+                        .ForMember(dest => dest.DateIntroduced,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateLatestMajorAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
+                    x.CreateMap<InternalModels.SpecificBillDetail, Contracts.SpecificBillDetail>()
+                        .ForMember(dest => dest.DateIntroduced,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateHousePassageVote,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassageVote))
+                        .ForMember(dest => dest.DateLatestMajorAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction))
+                        .ForMember(dest => dest.DateSenatePassageVote,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
                 });
             }
 
