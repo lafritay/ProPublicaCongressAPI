@@ -75,6 +75,9 @@
     <Compile Include="Contracts\SenateNominationVote.cs" />
     <Compile Include="Contracts\SenateNominationVoteContainer.cs" />
     <Compile Include="Contracts\Session.cs" />
+    <Compile Include="Contracts\SpecificBill.cs" />
+    <Compile Include="Contracts\SpecificBillAction.cs" />
+    <Compile Include="Contracts\SpecificBillVoteSummary.cs" />
     <Compile Include="Contracts\VoteAggregateCategory.cs" />
     <Compile Include="Contracts\VoteByDate.cs" />
     <Compile Include="Contracts\VoteByDateContainer.cs" />
@@ -105,6 +108,9 @@
     <Compile Include="InternalModels\RollCallVoteSummaryTotal.cs" />
     <Compile Include="InternalModels\SenateNominationVote.cs" />
     <Compile Include="InternalModels\SenateNominationVoteContainer.cs" />
+    <Compile Include="InternalModels\SpecificBill.cs" />
+    <Compile Include="InternalModels\SpecificBillAction.cs" />
+    <Compile Include="InternalModels\SpecificBillVoteSummary.cs" />
     <Compile Include="InternalModels\VoteByDate.cs" />
     <Compile Include="InternalModels\VoteByDateContainer.cs" />
     <Compile Include="InternalModels\VoteByTypeContainer.cs" />
@@ -122,6 +128,8 @@
     <Compile Include="InternalModels\MembersContainer.cs" />
     <Compile Include="InternalModels\MemberSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolvers\NullableDateTimeResolver.cs" />
+    <Compile Include="Resolvers\DateTimeResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

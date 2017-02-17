@@ -1,4 +1,6 @@
-﻿namespace ProPublicaCongressAPI.Contracts
+﻿using System;
+
+namespace ProPublicaCongressAPI.Contracts
 {
     public class RecentBillByMember
     {
@@ -12,7 +14,7 @@
 
         public string SponsorMemberId { get; set; }
 
-        public string DateIntroduced { get; set; }
+        public DateTime DateIntroduced { get; set; }
 
         public int CosponsorCount { get; set; }
 
@@ -20,7 +22,7 @@
 
         public string PrimarySubject { get; set; }
 
-        public string DateLatestMajorAction { get; set; }
+        public DateTime DateLatestMajorAction { get; set; }
 
         public string LatestMajorAction { get; set; }
     }
