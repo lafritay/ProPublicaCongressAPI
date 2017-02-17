@@ -37,11 +37,48 @@ namespace ProPublicaCongressAPI
         private const string nomineesByStateUrl = "v1/{0}/nominees/state/{1}.json"; // 0 = congress, 1 = state
         private const string statePartyCountUrl = "v1/states/members/party.json";
         private const string committeesUrl = "v1/{0}/{1}/committees/{2}.json"; // 0 = congress, 1 = chamber, 2 = committee-id
+        private const string offsetParameter = "?offset={0}";
 
         public ProPublicaCongressApiClient(string apiKey)
         {
             this.apiKey = apiKey;
             AutoMapperConfiguration.Initialize();
+        }
+
+        public async Task<Contracts.RecentBillsByMemberContainer> GetRecentBillsByMember(string memberId, RecentBillByMemberType billType, int? offset = null)
+        {
+            string url = apiBaseUrl + String.Format(recentBillsByMemberUrl, memberId, billType.ToString().ToLower());
+
+            // we can offset the results to page through them since this endpoint only returns 20 at a time
+            if (offset.HasValue && offset.Value > 0)
+            {
+                url += String.Format(offsetParameter, offset.Value);
+            }
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.RecentBillsByMemberContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.RecentBillsByMemberContainer,
+                Contracts.RecentBillsByMemberContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
+        public async Task<Contracts.RecentBillsContainer> GetRecentBills(int congress, Chamber chamber, RecentBillType billType, int? offset = null)
+        {
+            string url = apiBaseUrl + String.Format(recentBillsUrl, congress, chamber.ToString().ToLower(), billType.ToString().ToLower());
+
+            // we can offset the results to page through them since this endpoint only returns 20 at a time
+            if(offset.HasValue && offset.Value > 0)
+            {
+                url += String.Format(offsetParameter, offset.Value);
+            }
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.RecentBillsContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.RecentBillsContainer,
+                Contracts.RecentBillsContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
         }
 
         public async Task<Contracts.SenateNominationVoteContainer> GetSenateNominationVotes(int congress)

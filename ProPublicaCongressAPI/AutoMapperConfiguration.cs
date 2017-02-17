@@ -123,6 +123,12 @@ namespace ProPublicaCongressAPI
                             return dateTimeVoted;
                         }));
                     x.CreateMap<InternalModels.SenateNominationVoteContainer, Contracts.SenateNominationVoteContainer>();
+
+                    x.CreateMap<InternalModels.RecentBill, Contracts.RecentBill>();
+                    x.CreateMap<InternalModels.RecentBillsContainer, Contracts.RecentBillsContainer>();
+
+                    x.CreateMap<InternalModels.RecentBillByMember, Contracts.RecentBillByMember>();
+                    x.CreateMap<InternalModels.RecentBillsByMemberContainer, Contracts.RecentBillsByMemberContainer>();
                 });
             }
 

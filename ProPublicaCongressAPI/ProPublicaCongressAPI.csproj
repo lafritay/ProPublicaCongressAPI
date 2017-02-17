@@ -58,6 +58,12 @@
     <Compile Include="Contracts\MemberVotesContainer.cs" />
     <Compile Include="Contracts\NewMember.cs" />
     <Compile Include="Contracts\NewMembersContainer.cs" />
+    <Compile Include="Contracts\RecentBill.cs" />
+    <Compile Include="Contracts\RecentBillByMember.cs" />
+    <Compile Include="Contracts\RecentBillsByMemberContainer.cs" />
+    <Compile Include="Contracts\RecentBillsContainer.cs" />
+    <Compile Include="Contracts\RecentBillByMemberType.cs" />
+    <Compile Include="Contracts\RecentBillType.cs" />
     <Compile Include="Contracts\RollCallVote.cs" />
     <Compile Include="Contracts\RollCallVoteContainer.cs" />
     <Compile Include="Contracts\RollCallVotesContainer.cs" />
@@ -75,6 +81,10 @@
     <Compile Include="Contracts\VoteByTypeContainer.cs" />
     <Compile Include="Contracts\VoteByTypeMember.cs" />
     <Compile Include="InternalModels\CurrentMember.cs" />
+    <Compile Include="InternalModels\RecentBill.cs" />
+    <Compile Include="InternalModels\RecentBillByMember.cs" />
+    <Compile Include="InternalModels\RecentBillsByMemberContainer.cs" />
+    <Compile Include="InternalModels\RecentBillsContainer.cs" />
     <Compile Include="InternalModels\RollCallVoteContainer.cs" />
     <Compile Include="InternalModels\RollCallVoteSummaryDemocratic.cs" />
     <Compile Include="InternalModels\RollCallVoteSummaryIndependent.cs" />
