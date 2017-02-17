@@ -105,6 +105,24 @@ namespace ProPublicaCongressAPI
                             return dateTimeVoted;
                         }));
                     x.CreateMap<InternalModels.VoteByDateContainer, Contracts.VoteByDateContainer>();
+
+
+                    x.CreateMap<InternalModels.SenateNominationVote, Contracts.SenateNominationVote>()
+                        .ForMember(dest => dest.DateTimeVoted, opts => opts.ResolveUsing(source =>
+                        {
+                            string rawDateTimeVoted = source.DateVoted;
+
+                            if (!String.IsNullOrWhiteSpace(source.TimeVoted))
+                            {
+                                rawDateTimeVoted += " " + source.TimeVoted;
+                            }
+
+                            DateTime dateTimeVoted;
+                            DateTime.TryParse(rawDateTimeVoted, out dateTimeVoted);
+
+                            return dateTimeVoted;
+                        }));
+                    x.CreateMap<InternalModels.SenateNominationVoteContainer, Contracts.SenateNominationVoteContainer>();
                 });
             }
 

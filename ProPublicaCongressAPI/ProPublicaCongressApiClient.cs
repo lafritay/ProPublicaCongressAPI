@@ -44,6 +44,18 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
+        public async Task<Contracts.SenateNominationVoteContainer> GetSenateNominationVotes(int congress)
+        {
+            string url = apiBaseUrl + String.Format(senateNominationsUrl, congress);
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.SenateNominationVoteContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.SenateNominationVoteContainer,
+                Contracts.SenateNominationVoteContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
         public async Task<Contracts.VoteByDateContainer> GetVotesByDate(Chamber chamber, int year, int month)
         {
             string url = apiBaseUrl + String.Format(votesByDateUrl, chamber.ToString().ToLower(), year, month);

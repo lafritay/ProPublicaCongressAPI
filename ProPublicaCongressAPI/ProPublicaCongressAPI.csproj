@@ -66,6 +66,8 @@
     <Compile Include="Contracts\RollCallVoteSummaryIndependent.cs" />
     <Compile Include="Contracts\RollCallVoteSummaryRepublican.cs" />
     <Compile Include="Contracts\RollCallVoteSummaryTotal.cs" />
+    <Compile Include="Contracts\SenateNominationVote.cs" />
+    <Compile Include="Contracts\SenateNominationVoteContainer.cs" />
     <Compile Include="Contracts\Session.cs" />
     <Compile Include="Contracts\VoteAggregateCategory.cs" />
     <Compile Include="Contracts\VoteByDate.cs" />
@@ -91,6 +93,8 @@
     <Compile Include="InternalModels\RollCallVotesContainer.cs" />
     <Compile Include="InternalModels\RollCallVotePosition.cs" />
     <Compile Include="InternalModels\RollCallVoteSummaryTotal.cs" />
+    <Compile Include="InternalModels\SenateNominationVote.cs" />
+    <Compile Include="InternalModels\SenateNominationVoteContainer.cs" />
     <Compile Include="InternalModels\VoteByDate.cs" />
     <Compile Include="InternalModels\VoteByDateContainer.cs" />
     <Compile Include="InternalModels\VoteByTypeContainer.cs" />

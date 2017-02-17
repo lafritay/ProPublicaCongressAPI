@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace ProPublicaCongressAPI.InternalModels
 {
-    internal class VoteByDate
+    internal class SenateNominationVote
     {
         [JsonProperty("congress")]
         public int Congress { get; set; }
@@ -13,12 +12,6 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("roll_call")]
         public int RollCallNumber { get; set; }
-
-        [JsonProperty("vote_uri")]
-        public string VoteDetailUrl { get; set; }
-
-        [JsonProperty("bill_number")]
-        public string BillNumber { get; set; }
 
         [JsonProperty("question")]
         public string Question { get; set; }
@@ -37,6 +30,9 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("result")]
         public string Result { get; set; }
+
+        [JsonProperty("nominee_uri")]
+        public string NomineeDetailUrl { get; set; }
 
         [JsonProperty("democratic")]
         public RollCallVoteSummaryDemocratic DemocraticVoteSummary { get; set; }
