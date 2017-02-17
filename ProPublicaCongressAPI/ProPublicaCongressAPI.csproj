@@ -61,6 +61,7 @@
     <Compile Include="Contracts\MemberVotesContainer.cs" />
     <Compile Include="Contracts\NewMember.cs" />
     <Compile Include="Contracts\NewMembersContainer.cs" />
+    <Compile Include="Contracts\NomineeByState.cs" />
     <Compile Include="Contracts\RecentBill.cs" />
     <Compile Include="Contracts\RecentBillByMember.cs" />
     <Compile Include="Contracts\RecentBillsByMemberContainer.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="InternalModels\BillCosponsorContainer.cs" />
     <Compile Include="InternalModels\BillCosponsorPartySummary.cs" />
     <Compile Include="InternalModels\CurrentMember.cs" />
+    <Compile Include="InternalModels\NomineeByState.cs" />
     <Compile Include="InternalModels\RecentBill.cs" />
     <Compile Include="InternalModels\RecentBillByMember.cs" />
     <Compile Include="InternalModels\RecentBillsByMemberContainer.cs" />
