@@ -147,6 +147,8 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction))
                         .ForMember(dest => dest.DateSenatePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
+
+                    x.CreateMap<InternalModels.RecentNomination, Contracts.RecentNomination>();
                 });
             }
 

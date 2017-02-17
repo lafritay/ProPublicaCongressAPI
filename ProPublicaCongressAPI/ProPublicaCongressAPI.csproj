@@ -67,6 +67,8 @@
     <Compile Include="Contracts\RecentBillsContainer.cs" />
     <Compile Include="Contracts\RecentBillByMemberType.cs" />
     <Compile Include="Contracts\RecentBillType.cs" />
+    <Compile Include="Contracts\RecentNomination.cs" />
+    <Compile Include="Contracts\RecentNominationType.cs" />
     <Compile Include="Contracts\RollCallVote.cs" />
     <Compile Include="Contracts\RollCallVoteContainer.cs" />
     <Compile Include="Contracts\RollCallVotesContainer.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="InternalModels\RecentBillByMember.cs" />
     <Compile Include="InternalModels\RecentBillsByMemberContainer.cs" />
     <Compile Include="InternalModels\RecentBillsContainer.cs" />
+    <Compile Include="InternalModels\RecentNomination.cs" />
     <Compile Include="InternalModels\RollCallVoteContainer.cs" />
     <Compile Include="InternalModels\RollCallVoteSummaryDemocratic.cs" />
     <Compile Include="InternalModels\RollCallVoteSummaryIndependent.cs" />
