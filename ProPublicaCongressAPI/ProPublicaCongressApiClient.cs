@@ -45,6 +45,18 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
+        public async Task<Contracts.SpecificNomination> GetSpecificNomination(int congress, string nominationId)
+        {
+            string url = apiBaseUrl + String.Format(specificNominationUrl, congress, nominationId);
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.SpecificNomination>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.SpecificNomination,
+                Contracts.SpecificNomination>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
         public async Task<IReadOnlyCollection<Contracts.RecentNomination>> GetRecentNominations(int congress, RecentNominationType nominationType)
         {
             string url = apiBaseUrl + String.Format(recentNominationsByTypeUrl, congress, nominationType.ToString().ToLower());

@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System;
+using System.Collections.Generic;
 
 namespace ProPublicaCongressAPI.InternalModels
 {
-    internal class RecentNomination
+    internal class SpecificNomination
     {
+        [JsonProperty("congress")]
+        public int Congress { get; set; }
+
         [JsonProperty("id")]
         public string NominationId { get; set; }
-
-        [JsonProperty("uri")]
-        public string NominationDetailUrl { get; set; }
 
         [JsonProperty("date_received")]
         public string DateReceived { get; set; }
@@ -20,7 +20,7 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("nominee_state")]
         public string NomineeState { get; set; }
 
-        [JsonProperty("committee_uri")]
+        [JsonProperty("committee_url")]
         public string CommitteeDetailUrl { get; set; }
 
         [JsonProperty("latest_action_date")]
@@ -28,5 +28,11 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        [JsonProperty("actions")]
+        public IReadOnlyCollection<SpecificNominationAction> Actions { get; set; }
+
+        [JsonProperty("votes")]
+        public IReadOnlyCollection<SpecificNominationVote> Votes { get; set; }
     }
 }

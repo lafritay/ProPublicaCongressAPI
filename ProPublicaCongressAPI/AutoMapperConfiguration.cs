@@ -148,7 +148,23 @@ namespace ProPublicaCongressAPI
                         .ForMember(dest => dest.DateSenatePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
 
-                    x.CreateMap<InternalModels.RecentNomination, Contracts.RecentNomination>();
+                    x.CreateMap<InternalModels.RecentNomination, Contracts.RecentNomination>()
+                        .ForMember(dest => dest.DateLatestAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestAction))
+                        .ForMember(dest => dest.DateReceived,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateReceived));
+
+                    x.CreateMap<InternalModels.SpecificNominationAction, Contracts.SpecificNominationAction>()
+                        .ForMember(dest => dest.DateAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateAction));
+                    x.CreateMap<InternalModels.SpecificNominationVote, Contracts.SpecificNominationVote>()
+                        .ForMember(dest => dest.DateVote,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateVote));
+                    x.CreateMap<InternalModels.SpecificNomination, Contracts.SpecificNomination>()
+                        .ForMember(dest => dest.DateReceived,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateReceived))
+                        .ForMember(dest => dest.DateLatestAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestAction));
                 });
             }
 

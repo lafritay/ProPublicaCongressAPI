@@ -88,6 +88,9 @@
     <Compile Include="Contracts\SpecificBillDetailSubject.cs" />
     <Compile Include="Contracts\SpecificBillDetailType.cs" />
     <Compile Include="Contracts\SpecificBillVoteSummary.cs" />
+    <Compile Include="Contracts\SpecificNomination.cs" />
+    <Compile Include="Contracts\SpecificNominationAction.cs" />
+    <Compile Include="Contracts\SpecificNominationVote.cs" />
     <Compile Include="Contracts\VoteAggregateCategory.cs" />
     <Compile Include="Contracts\VoteByDate.cs" />
     <Compile Include="Contracts\VoteByDateContainer.cs" />
@@ -129,6 +132,9 @@
     <Compile Include="InternalModels\SpecificBillDetailAmendment.cs" />
     <Compile Include="InternalModels\SpecificBillDetailSubject.cs" />
     <Compile Include="InternalModels\SpecificBillVoteSummary.cs" />
+    <Compile Include="InternalModels\SpecificNomination.cs" />
+    <Compile Include="InternalModels\SpecificNominationAction.cs" />
+    <Compile Include="InternalModels\SpecificNominationVote.cs" />
     <Compile Include="InternalModels\VoteByDate.cs" />
     <Compile Include="InternalModels\VoteByDateContainer.cs" />
     <Compile Include="InternalModels\VoteByTypeContainer.cs" />
