@@ -133,6 +133,20 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction))
                         .ForMember(dest => dest.DateSenatePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
+
+                    x.CreateMap<InternalModels.BillCosponsor, Contracts.BillCosponsor>()
+                        .ForMember(dest => dest.DateCosponsored,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateCosponsored));
+                    x.CreateMap<InternalModels.BillCosponsorPartySummary, Contracts.BillCosponsorPartySummary>();
+                    x.CreateMap<InternalModels.BillCosponsorContainer, Contracts.BillCosponsorContainer>()
+                        .ForMember(dest => dest.DateIntroduced,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateHousePassageVote,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassageVote))
+                        .ForMember(dest => dest.DateLatestMajorAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction))
+                        .ForMember(dest => dest.DateSenatePassageVote,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
                 });
             }
 

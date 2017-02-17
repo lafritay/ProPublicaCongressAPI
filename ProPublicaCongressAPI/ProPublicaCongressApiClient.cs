@@ -45,6 +45,18 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
+        public async Task<Contracts.BillCosponsorContainer> GetBillCosponsors(int congress, string billId)
+        {
+            string url = apiBaseUrl + String.Format(billCosponsorsUrl, congress, billId);
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.BillCosponsorContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.BillCosponsorContainer,
+                Contracts.BillCosponsorContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
         public async Task<Contracts.SpecificBillDetail> GetSpecificBillDetail(int congress, string billId, SpecificBillDetailType billDetailType)
         {
             string url = apiBaseUrl + String.Format(specificBillDetailsUrl, congress, billId, billDetailType.ToString().ToLower());
@@ -328,9 +340,9 @@ namespace ProPublicaCongressAPI
             Debug.Assert(!String.IsNullOrWhiteSpace(url));
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
-            var membersJson = await httpClient.GetStringAsync(url);
-            var resultInterface = JsonConvert.DeserializeObject<ApiResponse<IReadOnlyCollection<T>>>(membersJson);
-            return resultInterface;
+            var json = await httpClient.GetStringAsync(url);
+            var result = JsonConvert.DeserializeObject<ApiResponse<IReadOnlyCollection<T>>>(json);
+            return result;
         }
     }
 }

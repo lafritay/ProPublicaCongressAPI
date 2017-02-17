@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="Contracts\BillCosponsor.cs" />
+    <Compile Include="Contracts\BillCosponsorContainer.cs" />
+    <Compile Include="Contracts\BillCosponsorPartySummary.cs" />
     <Compile Include="Contracts\Chamber.cs" />
     <Compile Include="Contracts\CosponsorBillType.cs" />
     <Compile Include="Contracts\CurrentMember.cs" />
@@ -88,6 +91,9 @@
     <Compile Include="Contracts\VoteByDateContainer.cs" />
     <Compile Include="Contracts\VoteByTypeContainer.cs" />
     <Compile Include="Contracts\VoteByTypeMember.cs" />
+    <Compile Include="InternalModels\BillCosponsor.cs" />
+    <Compile Include="InternalModels\BillCosponsorContainer.cs" />
+    <Compile Include="InternalModels\BillCosponsorPartySummary.cs" />
     <Compile Include="InternalModels\CurrentMember.cs" />
     <Compile Include="InternalModels\RecentBill.cs" />
     <Compile Include="InternalModels\RecentBillByMember.cs" />
