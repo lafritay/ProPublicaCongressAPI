@@ -49,6 +49,8 @@
     <Compile Include="Contracts\BillCosponsorContainer.cs" />
     <Compile Include="Contracts\BillCosponsorPartySummary.cs" />
     <Compile Include="Contracts\Chamber.cs" />
+    <Compile Include="Contracts\Committee.cs" />
+    <Compile Include="Contracts\CommitteesContainer.cs" />
     <Compile Include="Contracts\CosponsorBillType.cs" />
     <Compile Include="Contracts\CurrentMember.cs" />
     <Compile Include="Contracts\MemberBillCosponsored.cs" />
@@ -100,6 +102,8 @@
     <Compile Include="InternalModels\BillCosponsor.cs" />
     <Compile Include="InternalModels\BillCosponsorContainer.cs" />
     <Compile Include="InternalModels\BillCosponsorPartySummary.cs" />
+    <Compile Include="InternalModels\Committee.cs" />
+    <Compile Include="InternalModels\CommitteesContainer.cs" />
     <Compile Include="InternalModels\CurrentMember.cs" />
     <Compile Include="InternalModels\NomineeByState.cs" />
     <Compile Include="InternalModels\RecentBill.cs" />

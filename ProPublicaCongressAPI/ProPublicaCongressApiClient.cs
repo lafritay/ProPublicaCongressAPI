@@ -36,13 +36,26 @@ namespace ProPublicaCongressAPI
         private const string specificNominationUrl = "v1/{0}/nominees/{1}.json"; // 0 = congress, 1 = nominee-id
         private const string nomineesByStateUrl = "v1/{0}/nominees/state/{1}.json"; // 0 = congress, 1 = state
         private const string statePartyCountUrl = "v1/states/members/party.json";
-        private const string committeesUrl = "v1/{0}/{1}/committees/{2}.json"; // 0 = congress, 1 = chamber, 2 = committee-id
+        private const string committeesUrl = "v1/{0}/{1}/committees.json"; // 0 = congress, 1 = chamber
+        private const string specificCommitteeUrl = "v1/{0}/{1}/committees/{2}.json"; // 0 = congress, 1 = chamber, 2 = committee-id
         private const string offsetParameter = "?offset={0}";
 
         public ProPublicaCongressApiClient(string apiKey)
         {
             this.apiKey = apiKey;
             AutoMapperConfiguration.Initialize();
+        }
+
+        public async Task<Contracts.CommitteesContainer> GetCommitttees(int congress, Chamber chamber)
+        {
+            string url = apiBaseUrl + String.Format(committeesUrl, congress, chamber.ToString().ToLower());
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.CommitteesContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.CommitteesContainer,
+                Contracts.CommitteesContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
         }
 
         public async Task<IReadOnlyCollection<Contracts.NomineeByState>> GetNomineesByState(int congress, string state)
