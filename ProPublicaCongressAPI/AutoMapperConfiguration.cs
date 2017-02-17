@@ -174,6 +174,13 @@ namespace ProPublicaCongressAPI
 
                     x.CreateMap<InternalModels.Committee, Contracts.Committee>();
                     x.CreateMap<InternalModels.CommitteesContainer, Contracts.CommitteesContainer>();
+
+                    x.CreateMap<InternalModels.SpecificCommittee, Contracts.SpecificCommittee>();
+                    x.CreateMap<InternalModels.SpecificCommitteeMember, Contracts.SpecificCommitteeMember>()
+                        .ForMember(dest => dest.DateStarted,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateStarted))
+                        .ForMember(dest => dest.DateEnded,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateEnded));
                 });
             }
 

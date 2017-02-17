@@ -46,6 +46,18 @@ namespace ProPublicaCongressAPI
             AutoMapperConfiguration.Initialize();
         }
 
+        public async Task<Contracts.SpecificCommittee> GetSpecificCommittee(int congress, Chamber chamber, string committeeId)
+        {
+            string url = apiBaseUrl + String.Format(specificCommitteeUrl, congress, chamber.ToString().ToLower(), committeeId);
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.SpecificCommittee>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.SpecificCommittee,
+                Contracts.SpecificCommittee>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
         public async Task<Contracts.CommitteesContainer> GetCommitttees(int congress, Chamber chamber)
         {
             string url = apiBaseUrl + String.Format(committeesUrl, congress, chamber.ToString().ToLower());
