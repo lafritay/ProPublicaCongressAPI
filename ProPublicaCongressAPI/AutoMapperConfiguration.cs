@@ -62,8 +62,50 @@ namespace ProPublicaCongressAPI
 
                     x.CreateMap<InternalModels.MemberBillCosponsored, Contracts.MemberBillCosponsored>();
                     x.CreateMap<InternalModels.MemberBillsCosponsoredContainer, Contracts.MemberBillsCosponsoredContainer>();
-                });
 
+                    x.CreateMap<InternalModels.RollCallVotePosition, Contracts.RollCallVotePosition>();
+                    x.CreateMap<InternalModels.RollCallVote, Contracts.RollCallVote>()
+                        .ForMember(dest => dest.DateTimeRollCall, opts => opts.ResolveUsing(source =>
+                        {
+                            string rawDateTimeVoted = source.DateRollCall;
+
+                            if (!String.IsNullOrWhiteSpace(source.TimeRollCall))
+                            {
+                                rawDateTimeVoted += " " + source.TimeRollCall;
+                            }
+
+                            DateTime dateTimeVoted;
+                            DateTime.TryParse(rawDateTimeVoted, out dateTimeVoted);
+
+                            return dateTimeVoted;
+                        }));
+                    x.CreateMap<InternalModels.RollCallVoteSummaryDemocratic, Contracts.RollCallVoteSummaryDemocratic>();
+                    x.CreateMap<InternalModels.RollCallVoteSummaryRepublican, Contracts.RollCallVoteSummaryRepublican>();
+                    x.CreateMap<InternalModels.RollCallVoteSummaryIndependent, Contracts.RollCallVoteSummaryIndependent>();
+                    x.CreateMap<InternalModels.RollCallVoteSummaryTotal, Contracts.RollCallVoteSummaryTotal>();
+                    x.CreateMap<InternalModels.RollCallVoteContainer, Contracts.RollCallVoteContainer>();
+                    x.CreateMap<InternalModels.RollCallVotesContainer, Contracts.RollCallVotesContainer>();
+
+                    x.CreateMap<InternalModels.VoteByTypeMember, Contracts.VoteByTypeMember>();
+                    x.CreateMap<InternalModels.VoteByTypeContainer, Contracts.VoteByTypeContainer>();
+
+                    x.CreateMap<InternalModels.VoteByDate, Contracts.VoteByDate>()
+                        .ForMember(dest => dest.DateTimeVoted, opts => opts.ResolveUsing(source =>
+                        {
+                            string rawDateTimeVoted = source.DateVoted;
+
+                            if (!String.IsNullOrWhiteSpace(source.TimeVoted))
+                            {
+                                rawDateTimeVoted += " " + source.TimeVoted;
+                            }
+
+                            DateTime dateTimeVoted;
+                            DateTime.TryParse(rawDateTimeVoted, out dateTimeVoted);
+
+                            return dateTimeVoted;
+                        }));
+                    x.CreateMap<InternalModels.VoteByDateContainer, Contracts.VoteByDateContainer>();
+                });
             }
 
             if (mapper == null)

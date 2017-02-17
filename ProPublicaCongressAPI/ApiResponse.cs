@@ -12,6 +12,6 @@ namespace ProPublicaCongressAPI
         public string Copyright { get; set; }
 
         [JsonProperty("results")]
-        public IReadOnlyCollection<T> Results { get; set; }
+        public T Results { get; set; }
     }
 }
