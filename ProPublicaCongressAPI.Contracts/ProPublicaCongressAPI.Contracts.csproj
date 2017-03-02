@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79404BA6-C94D-476F-9E2F-A965B34C180A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProPublicaCongressAPI.Contracts</RootNamespace>
+    <AssemblyName>ProPublicaCongressAPI.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BillCosponsor.cs" />
+    <Compile Include="BillCosponsorContainer.cs" />
+    <Compile Include="BillCosponsorPartySummary.cs" />
+    <Compile Include="Chamber.cs" />
+    <Compile Include="Committee.cs" />
+    <Compile Include="CommitteesContainer.cs" />
+    <Compile Include="CosponsorBillType.cs" />
+    <Compile Include="CurrentMember.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="MemberBillCosponsored.cs" />
+    <Compile Include="MemberBillsCosponsoredContainer.cs" />
+    <Compile Include="MemberBillSponsorshipComparison.cs" />
+    <Compile Include="MemberBillSponsorshipComparisonContainer.cs" />
+    <Compile Include="MemberCommittee.cs" />
+    <Compile Include="MemberRole.cs" />
+    <Compile Include="MembersContainer.cs" />
+    <Compile Include="MemberSummary.cs" />
+    <Compile Include="MemberVote.cs" />
+    <Compile Include="MemberVoteBill.cs" />
+    <Compile Include="MemberVoteComparison.cs" />
+    <Compile Include="MemberVotesContainer.cs" />
+    <Compile Include="NewMember.cs" />
+    <Compile Include="NewMembersContainer.cs" />
+    <Compile Include="NomineeByState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecentBill.cs" />
+    <Compile Include="RecentBillByMember.cs" />
+    <Compile Include="RecentBillByMemberType.cs" />
+    <Compile Include="RecentBillsByMemberContainer.cs" />
+    <Compile Include="RecentBillsContainer.cs" />
+    <Compile Include="RecentBillType.cs" />
+    <Compile Include="RecentNomination.cs" />
+    <Compile Include="RecentNominationType.cs" />
+    <Compile Include="RollCallVote.cs" />
+    <Compile Include="RollCallVoteContainer.cs" />
+    <Compile Include="RollCallVotePosition.cs" />
+    <Compile Include="RollCallVotesContainer.cs" />
+    <Compile Include="RollCallVoteSummaryDemocratic.cs" />
+    <Compile Include="RollCallVoteSummaryIndependent.cs" />
+    <Compile Include="RollCallVoteSummaryRepublican.cs" />
+    <Compile Include="RollCallVoteSummaryTotal.cs" />
+    <Compile Include="SenateNominationVote.cs" />
+    <Compile Include="SenateNominationVoteContainer.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SpecificBill.cs" />
+    <Compile Include="SpecificBillAction.cs" />
+    <Compile Include="SpecificBillDetail.cs" />
+    <Compile Include="SpecificBillDetailAmendment.cs" />
+    <Compile Include="SpecificBillDetailRelated.cs" />
+    <Compile Include="SpecificBillDetailSubject.cs" />
+    <Compile Include="SpecificBillDetailType.cs" />
+    <Compile Include="SpecificBillVoteSummary.cs" />
+    <Compile Include="SpecificCommittee.cs" />
+    <Compile Include="SpecificCommitteeMember.cs" />
+    <Compile Include="SpecificNomination.cs" />
+    <Compile Include="SpecificNominationAction.cs" />
+    <Compile Include="SpecificNominationVote.cs" />
+    <Compile Include="VoteAggregateCategory.cs" />
+    <Compile Include="VoteByDate.cs" />
+    <Compile Include="VoteByDateContainer.cs" />
+    <Compile Include="VoteByTypeContainer.cs" />
+    <Compile Include="VoteByTypeMember.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

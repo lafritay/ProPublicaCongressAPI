@@ -45,62 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
-    <Compile Include="Contracts\BillCosponsor.cs" />
-    <Compile Include="Contracts\BillCosponsorContainer.cs" />
-    <Compile Include="Contracts\BillCosponsorPartySummary.cs" />
-    <Compile Include="Contracts\Chamber.cs" />
-    <Compile Include="Contracts\Committee.cs" />
-    <Compile Include="Contracts\CommitteesContainer.cs" />
-    <Compile Include="Contracts\CosponsorBillType.cs" />
-    <Compile Include="Contracts\CurrentMember.cs" />
-    <Compile Include="Contracts\MemberBillCosponsored.cs" />
-    <Compile Include="Contracts\MemberBillsCosponsoredContainer.cs" />
-    <Compile Include="Contracts\MemberBillSponsorshipComparison.cs" />
-    <Compile Include="Contracts\MemberBillSponsorshipComparisonContainer.cs" />
-    <Compile Include="Contracts\MemberVote.cs" />
-    <Compile Include="Contracts\MemberVoteBill.cs" />
-    <Compile Include="Contracts\MemberVoteComparison.cs" />
-    <Compile Include="Contracts\MemberVotesContainer.cs" />
-    <Compile Include="Contracts\NewMember.cs" />
-    <Compile Include="Contracts\NewMembersContainer.cs" />
-    <Compile Include="Contracts\NomineeByState.cs" />
-    <Compile Include="Contracts\RecentBill.cs" />
-    <Compile Include="Contracts\RecentBillByMember.cs" />
-    <Compile Include="Contracts\RecentBillsByMemberContainer.cs" />
-    <Compile Include="Contracts\RecentBillsContainer.cs" />
-    <Compile Include="Contracts\RecentBillByMemberType.cs" />
-    <Compile Include="Contracts\RecentBillType.cs" />
-    <Compile Include="Contracts\RecentNomination.cs" />
-    <Compile Include="Contracts\RecentNominationType.cs" />
-    <Compile Include="Contracts\RollCallVote.cs" />
-    <Compile Include="Contracts\RollCallVoteContainer.cs" />
-    <Compile Include="Contracts\RollCallVotesContainer.cs" />
-    <Compile Include="Contracts\RollCallVotePosition.cs" />
-    <Compile Include="Contracts\RollCallVoteSummaryDemocratic.cs" />
-    <Compile Include="Contracts\RollCallVoteSummaryIndependent.cs" />
-    <Compile Include="Contracts\RollCallVoteSummaryRepublican.cs" />
-    <Compile Include="Contracts\RollCallVoteSummaryTotal.cs" />
-    <Compile Include="Contracts\SenateNominationVote.cs" />
-    <Compile Include="Contracts\SenateNominationVoteContainer.cs" />
-    <Compile Include="Contracts\Session.cs" />
-    <Compile Include="Contracts\SpecificBill.cs" />
-    <Compile Include="Contracts\SpecificBillAction.cs" />
-    <Compile Include="Contracts\SpecificBillDetail.cs" />
-    <Compile Include="Contracts\SpecificBillDetailAmendment.cs" />
-    <Compile Include="Contracts\SpecificBillDetailRelated.cs" />
-    <Compile Include="Contracts\SpecificBillDetailSubject.cs" />
-    <Compile Include="Contracts\SpecificBillDetailType.cs" />
-    <Compile Include="Contracts\SpecificBillVoteSummary.cs" />
-    <Compile Include="Contracts\SpecificCommittee.cs" />
-    <Compile Include="Contracts\SpecificCommitteeMember.cs" />
-    <Compile Include="Contracts\SpecificNomination.cs" />
-    <Compile Include="Contracts\SpecificNominationAction.cs" />
-    <Compile Include="Contracts\SpecificNominationVote.cs" />
-    <Compile Include="Contracts\VoteAggregateCategory.cs" />
-    <Compile Include="Contracts\VoteByDate.cs" />
-    <Compile Include="Contracts\VoteByDateContainer.cs" />
-    <Compile Include="Contracts\VoteByTypeContainer.cs" />
-    <Compile Include="Contracts\VoteByTypeMember.cs" />
     <Compile Include="InternalModels\BillCosponsor.cs" />
     <Compile Include="InternalModels\BillCosponsorContainer.cs" />
     <Compile Include="InternalModels\BillCosponsorPartySummary.cs" />
@@ -151,11 +95,6 @@
     <Compile Include="InternalModels\VoteByTypeMember.cs" />
     <Compile Include="ProPublicaCongressApiClient.cs" />
     <Compile Include="ApiResponse.cs" />
-    <Compile Include="Contracts\Member.cs" />
-    <Compile Include="Contracts\MemberCommittee.cs" />
-    <Compile Include="Contracts\MemberRole.cs" />
-    <Compile Include="Contracts\MembersContainer.cs" />
-    <Compile Include="Contracts\MemberSummary.cs" />
     <Compile Include="InternalModels\Member.cs" />
     <Compile Include="InternalModels\MemberCommittee.cs" />
     <Compile Include="InternalModels\MemberRole.cs" />
@@ -168,7 +107,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProPublicaCongressAPI.Contracts\ProPublicaCongressAPI.Contracts.csproj">
+      <Project>{79404ba6-c94d-476f-9e2f-a965b34c180a}</Project>
+      <Name>ProPublicaCongressAPI.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

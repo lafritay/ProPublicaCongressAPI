@@ -3,7 +3,7 @@ using System;
 
 namespace ProPublicaCongressAPI.InternalModels
 {
-    public class MemberBillSponsorshipComparison
+    internal class MemberBillSponsorshipComparison
     {
         [JsonProperty("number")]
         public string Number { get; set; }
