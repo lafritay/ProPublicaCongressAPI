@@ -1,124 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8AD21428-003A-47AB-B165-45564269755D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProPublicaCongressAPI</RootNamespace>
-    <AssemblyName>ProPublicaCongressAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Net.Http" />
+  	<PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="AutoMapperConfiguration.cs" />
-    <Compile Include="InternalModels\BillCosponsor.cs" />
-    <Compile Include="InternalModels\BillCosponsorContainer.cs" />
-    <Compile Include="InternalModels\BillCosponsorPartySummary.cs" />
-    <Compile Include="InternalModels\Committee.cs" />
-    <Compile Include="InternalModels\CommitteesContainer.cs" />
-    <Compile Include="InternalModels\CurrentMember.cs" />
-    <Compile Include="InternalModels\NomineeByState.cs" />
-    <Compile Include="InternalModels\RecentBill.cs" />
-    <Compile Include="InternalModels\RecentBillByMember.cs" />
-    <Compile Include="InternalModels\RecentBillsByMemberContainer.cs" />
-    <Compile Include="InternalModels\RecentBillsContainer.cs" />
-    <Compile Include="InternalModels\RecentNomination.cs" />
-    <Compile Include="InternalModels\RollCallVoteContainer.cs" />
-    <Compile Include="InternalModels\RollCallVoteSummaryDemocratic.cs" />
-    <Compile Include="InternalModels\RollCallVoteSummaryIndependent.cs" />
-    <Compile Include="InternalModels\MemberBillCosponsored.cs" />
-    <Compile Include="InternalModels\MemberBillsCosponsoredContainer.cs" />
-    <Compile Include="InternalModels\MemberBillSponsorshipComparison.cs" />
-    <Compile Include="InternalModels\MemberBillSponsorshipComparisonContainer.cs" />
-    <Compile Include="InternalModels\MemberVote.cs" />
-    <Compile Include="InternalModels\MemberVoteBill.cs" />
-    <Compile Include="InternalModels\MemberVoteComparison.cs" />
-    <Compile Include="InternalModels\MemberVotesContainer.cs" />
-    <Compile Include="InternalModels\NewMember.cs" />
-    <Compile Include="InternalModels\NewMembersContainer.cs" />
-    <Compile Include="InternalModels\RollCallVoteSummaryRepublican.cs" />
-    <Compile Include="InternalModels\RollCallVote.cs" />
-    <Compile Include="InternalModels\RollCallVotesContainer.cs" />
-    <Compile Include="InternalModels\RollCallVotePosition.cs" />
-    <Compile Include="InternalModels\RollCallVoteSummaryTotal.cs" />
-    <Compile Include="InternalModels\SenateNominationVote.cs" />
-    <Compile Include="InternalModels\SenateNominationVoteContainer.cs" />
-    <Compile Include="InternalModels\SpecificBill.cs" />
-    <Compile Include="InternalModels\SpecificBillAction.cs" />
-    <Compile Include="InternalModels\SpecificBillDetail.cs" />
-    <Compile Include="InternalModels\SpecificBillDetailRelated.cs" />
-    <Compile Include="InternalModels\SpecificBillDetailAmendment.cs" />
-    <Compile Include="InternalModels\SpecificBillDetailSubject.cs" />
-    <Compile Include="InternalModels\SpecificBillVoteSummary.cs" />
-    <Compile Include="InternalModels\SpecificCommittee.cs" />
-    <Compile Include="InternalModels\SpecificCommitteeMember.cs" />
-    <Compile Include="InternalModels\SpecificNomination.cs" />
-    <Compile Include="InternalModels\SpecificNominationAction.cs" />
-    <Compile Include="InternalModels\SpecificNominationVote.cs" />
-    <Compile Include="InternalModels\VoteByDate.cs" />
-    <Compile Include="InternalModels\VoteByDateContainer.cs" />
-    <Compile Include="InternalModels\VoteByTypeContainer.cs" />
-    <Compile Include="InternalModels\VoteByTypeMember.cs" />
-    <Compile Include="ProPublicaCongressApiClient.cs" />
-    <Compile Include="ApiResponse.cs" />
-    <Compile Include="InternalModels\Member.cs" />
-    <Compile Include="InternalModels\MemberCommittee.cs" />
-    <Compile Include="InternalModels\MemberRole.cs" />
-    <Compile Include="InternalModels\MembersContainer.cs" />
-    <Compile Include="InternalModels\MemberSummary.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resolvers\NullableDateTimeResolver.cs" />
-    <Compile Include="Resolvers\DateTimeResolver.cs" />
+  	<Folder Include="InternalModels\" />
+  	<Folder Include="Resolvers\" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ProPublicaCongressAPI.Contracts\ProPublicaCongressAPI.Contracts.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProPublicaCongressAPI.Contracts\ProPublicaCongressAPI.Contracts.csproj">
-      <Project>{79404ba6-c94d-476f-9e2f-a965b34c180a}</Project>
-      <Name>ProPublicaCongressAPI.Contracts</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
