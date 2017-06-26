@@ -106,6 +106,8 @@ namespace ProPublicaCongressAPI
                     x.CreateMap<InternalModels.SpecificBill, Contracts.SpecificBill>()
                         .ForMember(dest => dest.DateIntroduced,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateLastVote,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateLastVote))
                         .ForMember(dest => dest.DateHousePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassageVote))
                         .ForMember(dest => dest.DateSenatePassageVote,
