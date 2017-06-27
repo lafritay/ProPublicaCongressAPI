@@ -41,10 +41,10 @@ namespace ProPublicaCongressAPI.InternalModels
         public bool Active { get; set; }
 
         [JsonProperty("house_passage")]
-        public string HousePassage { get; set; }
+        public string DateHousePassage { get; set; }
 
         [JsonProperty("senate_passage")]
-        public string SenatePassage { get; set; }
+        public string DateSenatePassage { get; set; }
 
         [JsonProperty("enacted")]
         public string Enacted { get; set; }

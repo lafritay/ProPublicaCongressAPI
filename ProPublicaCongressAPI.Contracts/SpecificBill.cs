@@ -21,8 +21,8 @@ namespace ProPublicaCongressAPI.Contracts
         public string GovTrackUrl { get; set; }
         public DateTime DateIntroduced { get; set; }
         public bool Active { get; set; }
-        public string HousePassage { get; set; }
-        public string SenatePassage { get; set; }
+        public DateTime? DateHousePassage { get; set; }
+        public DateTime? DateSenatePassage { get; set; }
         public string Enacted { get; set; }
         public string Vetoed { get; set; }
         public int CosponsorCount { get; set; }

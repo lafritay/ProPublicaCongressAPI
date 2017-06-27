@@ -108,6 +108,10 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
                         .ForMember(dest => dest.DateLastVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateLastVote))
+                        .ForMember(dest => dest.DateHousePassage,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassage))
+                        .ForMember(dest => dest.DateSenatePassage,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassage))
                         .ForMember(dest => dest.DateHousePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassageVote))
                         .ForMember(dest => dest.DateSenatePassageVote,
