@@ -1,27 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-<PropertyGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <PackageId>ProPublicaCongressAPI</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.0.20</PackageVersion>
     <Authors>Justin Skiles</Authors>
     <Description>Easy to use wrapper around the Pro Publica Congress API</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>congress api propublica government data</PackageTags>
-</PropertyGroup>
-
+  </PropertyGroup>
   <ItemGroup>
-  	<PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
-
   <ItemGroup>
-  	<Folder Include="InternalModels\" />
-  	<Folder Include="Resolvers\" />
+    <Folder Include="InternalModels\" />
+    <Folder Include="Resolvers\" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\ProPublicaCongressAPI.Contracts\ProPublicaCongressAPI.Contracts.csproj" />
   </ItemGroup>
-
 </Project>

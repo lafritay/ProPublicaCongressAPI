@@ -31,7 +31,7 @@ after_build:
 
     $xml.Save($xmlPath)
 
-    msbuild %appveyor_build_folder%\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj /t:pack
+    msbuild $xmlPath /t:pack
 
 deploy:
   provider: NuGet
