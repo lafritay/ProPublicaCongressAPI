@@ -84,6 +84,10 @@ namespace ProPublicaCongressAPI
                     x.CreateMap<InternalModels.RecentBill, Contracts.RecentBill>()
                         .ForMember(dest => dest.DateIntroduced,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.Enacted,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.Enacted))
+                        .ForMember(dest => dest.Vetoed,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.Vetoed))
                         .ForMember(dest => dest.DateLatestMajorAction,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
                     x.CreateMap<InternalModels.RecentBillsContainer, Contracts.RecentBillsContainer>();
@@ -116,6 +120,10 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateHousePassageVote))
                         .ForMember(dest => dest.DateSenatePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote))
+                        .ForMember(dest => dest.Enacted,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.Enacted))
+                        .ForMember(dest => dest.Vetoed,
+                            opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.Vetoed))
                         .ForMember(dest => dest.DateLatestMajorAction, 
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
 

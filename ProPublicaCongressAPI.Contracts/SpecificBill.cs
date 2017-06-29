@@ -23,8 +23,8 @@ namespace ProPublicaCongressAPI.Contracts
         public bool Active { get; set; }
         public DateTime? DateHousePassage { get; set; }
         public DateTime? DateSenatePassage { get; set; }
-        public string Enacted { get; set; }
-        public string Vetoed { get; set; }
+        public DateTime? Enacted { get; set; }
+        public DateTime? Vetoed { get; set; }
         public int CosponsorCount { get; set; }
         public int WithdrawnCosponsorCount { get; set; }
         public string PrimarySubject { get; set; }
