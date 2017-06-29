@@ -25,9 +25,9 @@ after_build:
 
     $xml = [xml](get-content $xmlPath)
 
-    $propertyGroup = $xml.Project.PropertyGroup | Where { $_.Version}
+    $propertyGroup = $xml.Project.PropertyGroup | Where { $_.PackageVersion}
 
-    $propertyGroup.Version = $env:appveyor_build_version
+    $propertyGroup.PackageVersion = $env:appveyor_build_version
 
     $xml.Save($xmlPath)
 
