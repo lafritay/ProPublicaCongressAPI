@@ -21,7 +21,6 @@ before_build:
 
 after_build:
   - ps: >-
-
     $xmlPath = "$env:appveyor_build_folder\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj"
     $xml = [xml](get-content $xmlPath)
     $propertyGroup = $xml.Project.PropertyGroup | Where { $_.Version}
