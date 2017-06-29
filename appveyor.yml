@@ -6,12 +6,6 @@ branches:
   only:
     - master
 
-assembly_info:
-  patch: true
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
-
 configuration: Release
 
 build:
@@ -24,7 +18,17 @@ cache:
   
 before_build:
   - cmd: nuget restore
-  
+
+after_build:
+  - ps: >-
+
+    $xmlPath = "$env:appveyor_build_folder\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj"
+    $xml = [xml](get-content $xmlPath)
+    $propertyGroup = $xml.Project.PropertyGroup | Where { $_.Version}
+    $propertyGroup.Version = $env:appveyor_build_version
+    $xml.Save($xmlPath)
+    msbuild %appveyor_build_folder%\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj /t:pack
+
 deploy:
   provider: NuGet
   api_key:
