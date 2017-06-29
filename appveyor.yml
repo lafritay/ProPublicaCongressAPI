@@ -20,12 +20,17 @@ before_build:
   - cmd: nuget restore
 
 after_build:
-  - ps: >-
+- ps: >-
     $xmlPath = "$env:appveyor_build_folder\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj"
+
     $xml = [xml](get-content $xmlPath)
+
     $propertyGroup = $xml.Project.PropertyGroup | Where { $_.Version}
+
     $propertyGroup.Version = $env:appveyor_build_version
+
     $xml.Save($xmlPath)
+
     msbuild %appveyor_build_folder%\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj /t:pack
 
 deploy:
