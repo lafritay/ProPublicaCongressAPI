@@ -11,7 +11,7 @@ build_script:
     
     $mainProjectXml = [xml](get-content $mainProjectFile)
     
-    $contractsProjectXml = [xml](get-content $$contractsProjectFile)
+    $contractsProjectXml = [xml](get-content $contractsProjectFile)
 
     $propertyGroup = $mainProjectXml.Project.PropertyGroup | Where { $_.PackageVersion}
     
