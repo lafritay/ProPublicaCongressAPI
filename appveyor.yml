@@ -6,20 +6,27 @@ build_script:
     nuget restore
 
     $mainProjectFile = "$env:appveyor_build_folder\ProPublicaCongressAPI\ProPublicaCongressAPI.csproj"
+    
     $contractsProjectFile = "$env:appveyor_build_folder\ProPublicaCongressAPI.Contracts\ProPublicaCongressAPI.Contracts.csproj"
     
     $mainProjectXml = [xml](get-content $mainProjectFile)
+    
     $contractsProjectXml = [xml](get-content $$contractsProjectFile)
 
     $propertyGroup = $mainProjectXml.Project.PropertyGroup | Where { $_.PackageVersion}
+    
     $propertyGroup.PackageVersion = $env:appveyor_build_version
+    
     $mainprojectXml.Save($xmlPath)
     
     $propertyGroup = $contractsProjectXml.Project.PropertyGroup | Where { $_.PackageVersion}
+    
     $propertyGroup.PackageVersion = $env:appveyor_build_version
+    
     $contractsProjectXml.Save($xmlPath)
 
     msbuild $mainProjectFile /t:pack /p:Configuration=Release
+    
     msbuild $contractsProjectFile /t:pack /p:Configuration=Release
 artifacts:
 - path: '**\*.nupkg'
