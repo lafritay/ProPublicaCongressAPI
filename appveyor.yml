@@ -17,13 +17,13 @@ build_script:
     
     $propertyGroup.PackageVersion = $env:appveyor_build_version
     
-    $mainprojectXml.Save($xmlPath)
+    $mainprojectXml.Save($mainProjectXml)
     
     $propertyGroup = $contractsProjectXml.Project.PropertyGroup | Where { $_.PackageVersion}
     
     $propertyGroup.PackageVersion = $env:appveyor_build_version
     
-    $contractsProjectXml.Save($xmlPath)
+    $contractsProjectXml.Save($contractsProjectXml)
 
     msbuild $mainProjectFile /t:pack /p:Configuration=Release
     
