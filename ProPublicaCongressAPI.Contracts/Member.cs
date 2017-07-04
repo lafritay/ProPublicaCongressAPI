@@ -8,7 +8,10 @@ namespace ProPublicaCongressAPI.Contracts
     {
         public string MemberId { get; set; }
 
+        [Obsolete("This property is no longer returned by the API and should not be used")]
         public int ThomasId { get; set; }
+
+        public string CrpId { get; set; }
 
         public string FirstName { get; set; }
 
@@ -36,6 +39,7 @@ namespace ProPublicaCongressAPI.Contracts
 
         public string FacebookAccount { get; set; }
 
+        [Obsolete("This property is no longer returned by the API and should not be used")]
         public long? FacebookId { get; set; }
 
         public string YoutubeAccount { get; set; }
@@ -51,5 +55,7 @@ namespace ProPublicaCongressAPI.Contracts
         public DateTime MostRecentVoteDate { get; set; }
 
         public IReadOnlyCollection<MemberRole> Roles { get; set; }
+        
+        public int VotesmartId { get; set; }
     }
 }
