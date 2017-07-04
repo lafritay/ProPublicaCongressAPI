@@ -9,8 +9,8 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("member_id")]
         public string MemberId { get; set; }
 
-        [JsonProperty("thomas_id")]
-        public int ThomasId { get; set; }
+        [JsonProperty("crp_id")]
+        public string CrpId { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -51,9 +51,6 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("facebook_account")]
         public string FacebookAccount { get; set; }
 
-        [JsonProperty("facebook_id")]
-        public long? FacebookId { get; set; }
-
         [JsonProperty("youtube_account")]
         public string YoutubeAccount { get; set; }
 
@@ -74,5 +71,8 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("roles")]
         public IReadOnlyCollection<MemberRole> Roles { get; set; }
+
+        [JsonProperty("votesmart_id")]
+        public int VotesmartId { get; set; }
     }
 }

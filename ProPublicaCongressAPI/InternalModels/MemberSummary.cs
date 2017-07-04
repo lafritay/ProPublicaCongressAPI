@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace ProPublicaCongressAPI.InternalModels
 {
@@ -9,6 +10,18 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("api_uri")]
         public string MemberDetailUrl { get; set; }
+
+        [JsonProperty("contact_form")]
+        public string ContactForm { get; set; }
+
+        [JsonProperty("crp_id")]
+        public string CrpId { get; set; }
+
+        [JsonProperty("cspan_id")]
+        public int CspanId { get; set; }
+
+        [JsonProperty("date_of_birth")]
+        public DateTime DateOfBirth { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -28,11 +41,20 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("facebook_account")]
         public string FacebookAccount { get; set; }
 
-        [JsonProperty("facebook_id")]
-        public long? FacebookId { get; set; }
+        [JsonProperty("fax")]
+        public string Fax { get; set; }
+
+        [JsonProperty("geoid")]
+        public string GeoId { get; set; }
 
         [JsonProperty("google_entity_id")]
         public string GoogleEntityId { get; set; }
+
+        [JsonProperty("govtrack_id")]
+        public string GovTrackId { get; set; }
+
+        [JsonProperty("icpsr_id")]
+        public int IcpsrId { get; set; }
 
         [JsonProperty("url")]
         public string HomeUrl { get; set; }
@@ -49,11 +71,26 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("ideal_point")]
         public string IdealPoint { get; set; }
 
+        [JsonProperty("in_office")]
+        public bool InOffice { get; set; }
+
+        [JsonProperty("leadership_role")]
+        public string LeadershipRole { get; set; }
+
         [JsonProperty("seniority")]
         public int Seniority { get; set; }
 
         [JsonProperty("next_election")]
         public int NextElection { get; set; }
+
+        [JsonProperty("ocd_id")]
+        public string OcdId { get; set; }
+
+        [JsonProperty("office")]
+        public string Office { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
 
         [JsonProperty("total_votes")]
         public int? TotalVotes { get; set; }
@@ -70,10 +107,16 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("district")]
         public int District { get; set; }
 
+        [JsonProperty("votesmart_id")]
+        public int VotesmartId { get; set; }
+
         [JsonProperty("missed_votes_pct")]
         public double PercentageOfVotesMissed { get; set; }
 
         [JsonProperty("votes_with_party_pct")]
         public double PercentageOVotesWithParty { get; set; }
+
+        [JsonProperty("youtube_account")]
+        public string YoutubeAccount { get; set; }
     }
 }
