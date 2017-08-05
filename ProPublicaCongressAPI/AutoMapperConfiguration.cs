@@ -23,12 +23,15 @@ namespace ProPublicaCongressAPI
             {
                 config = new MapperConfiguration(x =>
                 {
-                    x.CreateMap<InternalModels.MemberSummary, Contracts.MemberSummary>();
+                    x.CreateMap<InternalModels.MemberSummary, Contracts.MemberSummary>()
+                        .ForMember(dest => dest.FacebookId, opts => opts.Ignore()); 
                     x.CreateMap<InternalModels.MembersContainer, Contracts.MembersContainer>();
 
                     x.CreateMap<InternalModels.MemberCommittee, Contracts.MemberCommittee>();
                     x.CreateMap<InternalModels.MemberRole, Contracts.MemberRole>();
-                    x.CreateMap<InternalModels.Member, Contracts.Member>();
+                    x.CreateMap<InternalModels.Member, Contracts.Member>()
+                        .ForMember(dest => dest.ThomasId, opts => opts.Ignore())
+                        .ForMember(dest => dest.FacebookId, opts => opts.Ignore());
 
                     x.CreateMap<InternalModels.NewMember, Contracts.NewMember>();
                     x.CreateMap<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>();
