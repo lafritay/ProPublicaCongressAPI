@@ -14,11 +14,17 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("roll_call")]
         public int RollCallNumber { get; set; }
 
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
         [JsonProperty("vote_uri")]
         public string VoteDetailUrl { get; set; }
 
-        [JsonProperty("bill_number")]
-        public string BillNumber { get; set; }
+        [JsonProperty("bill")]
+        public VoteByDateBill Bill { get; set; }
 
         [JsonProperty("question")]
         public string Question { get; set; }
@@ -34,6 +40,18 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("time")]
         public string TimeVoted { get; set; }
+
+        [JsonProperty("tie_breaker")]
+        public string TieBreaker { get; set; }
+
+        [JsonProperty("tie_breaker_vote")]
+        public string TieBreakerVote { get; set; }
+
+        [JsonProperty("document_number")]
+        public string DocumentNumber { get; set; }
+
+        [JsonProperty("document_title")]
+        public string DocumentTitle { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
