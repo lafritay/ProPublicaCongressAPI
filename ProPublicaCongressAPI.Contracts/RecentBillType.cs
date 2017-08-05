@@ -6,6 +6,9 @@
         Introduced,
         Updated,
         Passed,
-        Major
+        Major,
+        Active,
+        Enacted,
+        Vetoed
     }
 }
