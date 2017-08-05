@@ -6,6 +6,7 @@ namespace ProPublicaCongressAPI.Contracts
     public class SpecificBill
     {
         public string BillId { get; set; }
+        public string BillSlug { get; set; }
         public int Congress { get; set; }
         public string BillNumber { get; set; }
         public string BillType { get; set; }

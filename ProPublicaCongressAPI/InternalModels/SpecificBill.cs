@@ -8,6 +8,9 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("bill_id")]
         public string BillId { get; set; }
 
+        [JsonProperty("bill_slug")]
+        public string BillSlug { get; set; }
+
         [JsonProperty("datetime")]
         public int Congress { get; set; }
 
