@@ -11,9 +11,13 @@ namespace ProPublicaCongressAPI.Contracts
 
         public int RollCallNumber { get; set; }
 
-        public string VoteDetailUrl { get; set; }
+        public string Source { get; set; }
 
-        public string BillNumber { get; set; }
+        public string Url { get; set; }
+
+        public string VoteDetailUrl { get; set; }
+        
+        public VoteByDateBill Bill { get; set; }
 
         public string Question { get; set; }
 
@@ -22,6 +26,14 @@ namespace ProPublicaCongressAPI.Contracts
         public string VoteType { get; set; }
 
         public DateTime DateTimeVoted { get; set; }
+
+        public string TieBreaker { get; set; }
+
+        public string TieBreakerVote { get; set; }
+
+        public string DocumentNumber { get; set; }
+
+        public string DocumentTitle { get; set; }
 
         public string Result { get; set; }
 
