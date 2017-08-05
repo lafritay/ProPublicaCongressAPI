@@ -9,5 +9,14 @@ namespace ProPublicaCongressAPI.InternalModels
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("chamber")]
+        public string Chamber { get; set; }
+
+        [JsonProperty("action_type")]
+        public string ActionType { get; set; }
     }
 }

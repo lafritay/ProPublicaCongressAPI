@@ -107,9 +107,13 @@ namespace ProPublicaCongressAPI
                         {
                             return CreateDateTimeFromDateAndTime(source.DateVoted, source.TimeVoted);
                         }));
+
                     x.CreateMap<InternalModels.SpecificBillAction, Contracts.SpecificBillAction>()
                         .ForMember(dest => dest.DateTimeOccurred,
-                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateTimeOccurred));
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateTimeOccurred))
+                        .ForMember(dest => dest.Chamber,
+                            opts => opts.ResolveUsing<ChamberResolver, string>(s => s.Chamber));
+
                     x.CreateMap<InternalModels.SpecificBill, Contracts.SpecificBill>()
                         .ForMember(dest => dest.DateIntroduced,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
