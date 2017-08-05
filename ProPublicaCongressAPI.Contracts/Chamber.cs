@@ -10,6 +10,7 @@ namespace ProPublicaCongressAPI.Contracts
     {
         Unknown,
         House,
-        Senate
+        Senate,
+        Both
     }
 }

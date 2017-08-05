@@ -23,12 +23,15 @@ namespace ProPublicaCongressAPI
             {
                 config = new MapperConfiguration(x =>
                 {
-                    x.CreateMap<InternalModels.MemberSummary, Contracts.MemberSummary>();
+                    x.CreateMap<InternalModels.MemberSummary, Contracts.MemberSummary>()
+                        .ForMember(dest => dest.FacebookId, opts => opts.Ignore()); 
                     x.CreateMap<InternalModels.MembersContainer, Contracts.MembersContainer>();
 
                     x.CreateMap<InternalModels.MemberCommittee, Contracts.MemberCommittee>();
                     x.CreateMap<InternalModels.MemberRole, Contracts.MemberRole>();
-                    x.CreateMap<InternalModels.Member, Contracts.Member>();
+                    x.CreateMap<InternalModels.Member, Contracts.Member>()
+                        .ForMember(dest => dest.ThomasId, opts => opts.Ignore())
+                        .ForMember(dest => dest.FacebookId, opts => opts.Ignore());
 
                     x.CreateMap<InternalModels.NewMember, Contracts.NewMember>();
                     x.CreateMap<InternalModels.NewMembersContainer, Contracts.NewMembersContainer>();
@@ -104,9 +107,13 @@ namespace ProPublicaCongressAPI
                         {
                             return CreateDateTimeFromDateAndTime(source.DateVoted, source.TimeVoted);
                         }));
+
                     x.CreateMap<InternalModels.SpecificBillAction, Contracts.SpecificBillAction>()
                         .ForMember(dest => dest.DateTimeOccurred,
-                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateTimeOccurred));
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateTimeOccurred))
+                        .ForMember(dest => dest.Chamber,
+                            opts => opts.ResolveUsing<ChamberResolver, string>(s => s.Chamber));
+
                     x.CreateMap<InternalModels.SpecificBill, Contracts.SpecificBill>()
                         .ForMember(dest => dest.DateIntroduced,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
