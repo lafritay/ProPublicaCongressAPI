@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProPublicaCongressAPI
 {
-    public class ProPublicaCongressApiClient
+    public class ProPublicaCongressApiClient : IProPublicaCongressApiClient
     {
         private readonly string apiKey;
 
