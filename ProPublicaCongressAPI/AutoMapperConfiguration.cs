@@ -75,7 +75,8 @@ namespace ProPublicaCongressAPI
                         {
                             return CreateDateTimeFromDateAndTime(source.DateVoted, source.TimeVoted);
                         }));
-                    x.CreateMap<InternalModels.VoteByDateBill, Contracts.VoteByDateBill>();
+                    x.CreateMap<InternalModels.VoteBill, Contracts.VoteBill>();
+                    x.CreateMap<InternalModels.VoteNomination, Contracts.VoteNomination>();
                     x.CreateMap<InternalModels.VoteByDateContainer, Contracts.VoteByDateContainer>();
 
                     x.CreateMap<InternalModels.SenateNominationVote, Contracts.SenateNominationVote>()

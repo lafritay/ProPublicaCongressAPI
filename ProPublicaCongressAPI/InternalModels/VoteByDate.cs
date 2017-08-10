@@ -24,7 +24,10 @@ namespace ProPublicaCongressAPI.InternalModels
         public string VoteDetailUrl { get; set; }
 
         [JsonProperty("bill")]
-        public VoteByDateBill Bill { get; set; }
+        public VoteBill Bill { get; set; }
+
+        [JsonProperty("nomination")]
+        public VoteNomination Nomination { get; set; }
 
         [JsonProperty("question")]
         public string Question { get; set; }

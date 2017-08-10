@@ -4,7 +4,7 @@ namespace ProPublicaCongressAPI.Contracts
 {
     public class SpecificBillVoteSummary
     {
-        public string Chamber { get; set; }
+        public Chamber Chamber { get; set; }
 
         public DateTime DateTimeVoted { get; set; }
 

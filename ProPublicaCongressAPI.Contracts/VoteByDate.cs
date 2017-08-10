@@ -7,7 +7,7 @@ namespace ProPublicaCongressAPI.Contracts
     {
         public int Congress { get; set; }
 
-        public int Session { get; set; }
+        public Session Session { get; set; }
 
         public int RollCallNumber { get; set; }
 
@@ -17,7 +17,9 @@ namespace ProPublicaCongressAPI.Contracts
 
         public string VoteDetailUrl { get; set; }
         
-        public VoteByDateBill Bill { get; set; }
+        public VoteBill Bill { get; set; }
+        
+        public VoteNomination Nomination { get; set; }
 
         public string Question { get; set; }
 

@@ -6,7 +6,7 @@ namespace ProPublicaCongressAPI.Contracts
     {
         public int Congress { get; set; }
 
-        public string Chamber { get; set; }
+        public Chamber Chamber { get; set; }
 
         public int NumberOfResults { get; set; }
 
