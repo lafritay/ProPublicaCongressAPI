@@ -4,7 +4,7 @@ namespace ProPublicaCongressAPI.Contracts
 {
     public class VoteByDateContainer
     {
-        public string Chamber { get; set; }
+        public Chamber Chamber { get; set; }
         public int Year { get; set; }
         public string Month { get; set; }
         public int NumberOfResults { get; set; }

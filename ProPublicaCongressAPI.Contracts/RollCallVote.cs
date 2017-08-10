@@ -7,11 +7,19 @@ namespace ProPublicaCongressAPI.Contracts
     {
         public int Congress { get; set; }
 
-        public int Session { get; set; }
+        public Session Session { get; set; }
 
-        public string Chamber { get; set; }
+        public Chamber Chamber { get; set; }
 
         public int RollCallNumber { get; set; }
+        
+        public string Source { get; set; }
+        
+        public string Url { get; set; }
+
+        public VoteBill Bill { get; set; }
+
+        public VoteNomination Nomination { get; set; }
 
         public string Question { get; set; }
 
@@ -22,6 +30,14 @@ namespace ProPublicaCongressAPI.Contracts
         public DateTime DateTimeRollCall { get; set; }
 
         public string Result { get; set; }
+
+        public string TieBreaker { get; set; }
+
+        public string TieBreakerVote { get; set; }
+
+        public string DocumentNumber { get; set; }
+
+        public string DocumentTitle { get; set; }
 
         public RollCallVoteSummaryDemocratic DemocraticVoteSummary { get; set; }
 
