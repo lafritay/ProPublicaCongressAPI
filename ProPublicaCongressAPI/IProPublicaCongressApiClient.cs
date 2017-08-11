@@ -8,6 +8,7 @@ namespace ProPublicaCongressAPI
     {
         Task<MemberBillSponsorshipComparisonContainer> CompareMemberBillSponsorships(string firstMemberId, string secondMemberId, int congress, Chamber chamber);
         Task<IReadOnlyCollection<MemberVoteComparison>> CompareMemberVotes(string firstMemberId, string secondMemberId, int congress, Chamber chamber);
+        Task<Contracts.AmendmentsContainer> GetAmendments(int congress, string billId, int? offset);
         Task<BillCosponsorContainer> GetBillCosponsors(int congress, string billId);
         Task<MemberBillsCosponsoredContainer> GetBillsCosponsoredByMember(string memberId, CosponsorBillType type);
         Task<CommitteesContainer> GetCommitttees(int congress, Chamber chamber);

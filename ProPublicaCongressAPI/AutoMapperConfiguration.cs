@@ -142,11 +142,6 @@ namespace ProPublicaCongressAPI
                         .ForMember(dest => dest.DateLatestMajorAction,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
                     x.CreateMap<InternalModels.SpecificBillDetailSubject, Contracts.SpecificBillDetailSubject>();
-                    x.CreateMap<InternalModels.SpecificBillDetailAmendment, Contracts.SpecificBillDetailAmendment>()
-                        .ForMember(dest => dest.DateIntroduced,
-                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
-                        .ForMember(dest => dest.DateLatestMajorAction,
-                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
                     x.CreateMap<InternalModels.SpecificBillDetail, Contracts.SpecificBillDetail>()
                         .ForMember(dest => dest.DateIntroduced,
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
@@ -156,6 +151,13 @@ namespace ProPublicaCongressAPI
                             opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction))
                         .ForMember(dest => dest.DateSenatePassageVote,
                             opts => opts.ResolveUsing<NullableDateTimeResolver, string>(s => s.DateSenatePassageVote));
+
+                    x.CreateMap<InternalModels.AmendmentsContainer, Contracts.AmendmentsContainer>();
+                    x.CreateMap<InternalModels.Amendment, Contracts.Amendment>()
+                        .ForMember(dest => dest.DateIntroduced,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateIntroduced))
+                        .ForMember(dest => dest.DateLatestMajorAction,
+                            opts => opts.ResolveUsing<DateTimeResolver, string>(s => s.DateLatestMajorAction));
 
                     x.CreateMap<InternalModels.BillCosponsor, Contracts.BillCosponsor>()
                         .ForMember(dest => dest.DateCosponsored,

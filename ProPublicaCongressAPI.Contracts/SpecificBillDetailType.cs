@@ -4,7 +4,6 @@
     {
         Unknown,
         Subjects,
-        Amendments,
         Related
     }
 }
