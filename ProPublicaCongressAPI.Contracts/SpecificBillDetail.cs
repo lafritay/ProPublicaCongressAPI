@@ -19,7 +19,6 @@ namespace ProPublicaCongressAPI.Contracts
         public DateTime? DateHousePassageVote { get; set; }
         public DateTime? DateSenatePassageVote { get; set; }
         public IReadOnlyCollection<SpecificBillDetailSubject> Subjects { get; set; }
-        public IReadOnlyCollection<SpecificBillDetailAmendment> Amendments { get; set; }
         public IReadOnlyCollection<SpecificBillDetailRelated> RelatedBills { get; set; }
     }
 }

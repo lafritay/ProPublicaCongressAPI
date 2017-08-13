@@ -30,7 +30,8 @@ namespace ProPublicaCongressAPI
         private const string recentBillsUrl = "v1/{0}/{1}/bills/{2}.json"; // 0 = congress, 1 = chamber, 2 = bill-type
         private const string recentBillsByMemberUrl = "v1/members/{0}/bills/{1}.json"; // 0 = member-id, 1 = bill-type
         private const string specificBillUrl = "v1/{0}/bills/{1}.json"; // 0 = congress, 1 = bill-id
-        private const string specificBillDetailsUrl = "v1/{0}/bills/{1}/{2}.json"; // 0 = congress, 1 = details-type
+        private const string specificBillDetailsUrl = "v1/{0}/bills/{1}/{2}.json"; // 0 = congress, 1 = details-type, 2 = details-type
+        private const string amendmentsUrl = "v1/{0}/bills/{1}/amendments.json"; // 0 = congress, 1 = details-type
         private const string billCosponsorsUrl = "v1/{0}/bills/{1}/cosponsors.json"; // 0 = congress, 1 = bill-id
         private const string recentNominationsByTypeUrl = "v1/{0}/nominees/{1}.json"; // 0 = congress, 1 = nomination-type
         private const string specificNominationUrl = "v1/{0}/nominees/{1}.json"; // 0 = congress, 1 = nominee-id
@@ -114,6 +115,24 @@ namespace ProPublicaCongressAPI
             var contract = AutoMapperConfiguration.Mapper.Map<
                 InternalModels.BillCosponsorContainer,
                 Contracts.BillCosponsorContainer>(internalModel.Results.ElementAt(0));
+
+            return contract;
+        }
+
+        public async Task<Contracts.AmendmentsContainer> GetAmendments(int congress, string billId, int? offset)
+        {
+            string url = apiBaseUrl + String.Format(amendmentsUrl, congress, billId);
+
+            // we can offset the results to page through them since this endpoint only returns 20 at a time
+            if (offset.HasValue && offset.Value > 0)
+            {
+                url += String.Format(offsetParameter, offset.Value);
+            }
+
+            var internalModel = await GetMultipleResultDataAsync<InternalModels.AmendmentsContainer>(url);
+            var contract = AutoMapperConfiguration.Mapper.Map<
+                InternalModels.AmendmentsContainer,
+                Contracts.AmendmentsContainer>(internalModel.Results.ElementAt(0));
 
             return contract;
         }

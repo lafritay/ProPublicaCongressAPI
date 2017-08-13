@@ -47,9 +47,6 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("subjects")]
         public IReadOnlyCollection<SpecificBillDetailSubject> Subjects { get; set; }
 
-        [JsonProperty("amendments")]
-        public IReadOnlyCollection<SpecificBillDetailAmendment> Amendments { get; set; }
-
         [JsonProperty("related_bills")]
         public IReadOnlyCollection<SpecificBillDetailRelated> RelatedBills { get; set; }
     }
