@@ -12,6 +12,7 @@ namespace ProPublicaCongressAPI.Contracts
         public string BillType { get; set; }
         public string BillDetailUrl { get; set; }
         public string BillTitle { get; set; }
+        public string BillTitleShort { get; set; }
         public string SponsorMemberName { get; set; }
         public string SponsorId { get; set; }
         public string SponsorMemberDetailUrl { get; set; }

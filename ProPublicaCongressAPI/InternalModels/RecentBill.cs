@@ -22,6 +22,9 @@ namespace ProPublicaCongressAPI.InternalModels
         [JsonProperty("title")]
         public string BillTitle { get; set; }
 
+        [JsonProperty("short_title")]
+        public string BillTitleShort { get; set; }
+
         [JsonProperty("sponsor_id")]
         public string SponsorId { get; set; }
 
