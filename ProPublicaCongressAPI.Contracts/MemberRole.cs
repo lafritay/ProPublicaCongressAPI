@@ -26,9 +26,9 @@ namespace ProPublicaCongressAPI.Contracts
 
         public DateTime? EndDate { get; set; }
 
-        public int BillSponsoredCount { get; set; }
+        public int? BillSponsoredCount { get; set; }
 
-        public int BillCosponsoredCount { get; set; }
+        public int? BillCosponsoredCount { get; set; }
 
         public double? MissedVotesPercentage { get; set; }
 

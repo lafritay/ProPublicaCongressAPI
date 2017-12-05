@@ -37,10 +37,10 @@ namespace ProPublicaCongressAPI.InternalModels
         public DateTime? EndDate { get; set; }
 
         [JsonProperty("bills_sponsored")]
-        public int BillSponsoredCount { get; set; }
+        public int? BillSponsoredCount { get; set; }
 
         [JsonProperty("bills_cosponsored")]
-        public int BillCosponsoredCount { get; set; }
+        public int? BillCosponsoredCount { get; set; }
 
         [JsonProperty("missed_votes_pct")]
         public double? MissedVotesPercentage { get; set; }
