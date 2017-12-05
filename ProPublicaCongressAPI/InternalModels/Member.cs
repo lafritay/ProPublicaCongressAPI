@@ -43,7 +43,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public int CspanId { get; set; }
 
         [JsonProperty("icpsr_id")]
-        public int IcpsrId { get; set; }
+        public int? IcpsrId { get; set; }
 
         [JsonProperty("twitter_account")]
         public string TwitterAccount { get; set; }

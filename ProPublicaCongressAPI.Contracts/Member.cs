@@ -33,7 +33,7 @@ namespace ProPublicaCongressAPI.Contracts
 
         public int CspanId { get; set; }
 
-        public int IcpsrId { get; set; }
+        public int? IcpsrId { get; set; }
 
         public string TwitterAccount { get; set; }
 

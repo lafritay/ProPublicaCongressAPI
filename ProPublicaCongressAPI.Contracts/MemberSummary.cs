@@ -23,7 +23,7 @@ namespace ProPublicaCongressAPI.Contracts
         public string GeoId { get; set; }
         public string GoogleEntityId { get; set; }
         public string GovTrackId { get; set; }
-        public int IcpsrId { get; set; }
+        public int? IcpsrId { get; set; }
         public string HomeUrl { get; set; }
         public string RssUrl { get; set; }
         public string HomeDomain { get; set; }
