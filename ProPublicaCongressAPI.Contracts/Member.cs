@@ -29,7 +29,7 @@ namespace ProPublicaCongressAPI.Contracts
 
         public string TimesTag { get; set; }
 
-        public int GovTrackId { get; set; }
+        public int? GovTrackId { get; set; }
 
         public int? CspanId { get; set; }
 

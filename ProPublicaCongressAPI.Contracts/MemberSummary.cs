@@ -22,7 +22,7 @@ namespace ProPublicaCongressAPI.Contracts
         public string Fax { get; set; }
         public string GeoId { get; set; }
         public string GoogleEntityId { get; set; }
-        public string GovTrackId { get; set; }
+        public int? GovTrackId { get; set; }
         public int? IcpsrId { get; set; }
         public string HomeUrl { get; set; }
         public string RssUrl { get; set; }

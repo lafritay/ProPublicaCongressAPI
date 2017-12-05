@@ -51,7 +51,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public string GoogleEntityId { get; set; }
 
         [JsonProperty("govtrack_id")]
-        public string GovTrackId { get; set; }
+        public int? GovTrackId { get; set; }
 
         [JsonProperty("icpsr_id")]
         public int? IcpsrId { get; set; }

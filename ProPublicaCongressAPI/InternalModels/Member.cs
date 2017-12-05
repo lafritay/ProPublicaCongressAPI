@@ -37,7 +37,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public string TimesTag { get; set; }
 
         [JsonProperty("govtrack_id")]
-        public int GovTrackId { get; set; }
+        public int? GovTrackId { get; set; }
 
         [JsonProperty("cspan_id")]
         public int? CspanId { get; set; }
