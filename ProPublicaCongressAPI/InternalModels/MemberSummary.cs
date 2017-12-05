@@ -108,7 +108,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public int District { get; set; }
 
         [JsonProperty("votesmart_id")]
-        public int VotesmartId { get; set; }
+        public int? VotesmartId { get; set; }
 
         [JsonProperty("missed_votes_pct")]
         public double PercentageOfVotesMissed { get; set; }

@@ -73,6 +73,6 @@ namespace ProPublicaCongressAPI.InternalModels
         public IReadOnlyCollection<MemberRole> Roles { get; set; }
 
         [JsonProperty("votesmart_id")]
-        public int VotesmartId { get; set; }
+        public int? VotesmartId { get; set; }
     }
 }

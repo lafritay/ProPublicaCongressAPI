@@ -56,6 +56,6 @@ namespace ProPublicaCongressAPI.Contracts
 
         public IReadOnlyCollection<MemberRole> Roles { get; set; }
         
-        public int VotesmartId { get; set; }
+        public int? VotesmartId { get; set; }
     }
 }
