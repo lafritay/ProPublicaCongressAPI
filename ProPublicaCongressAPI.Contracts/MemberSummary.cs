@@ -42,8 +42,8 @@ namespace ProPublicaCongressAPI.Contracts
         public string State { get; set; }
         public string District { get; set; }
         public int? VotesmartId { get; set; }
-        public double PercentageOfVotesMissed { get; set; }
-        public double PercentageOVotesWithParty { get; set; }
+        public double? PercentageOfVotesMissed { get; set; }
+        public double? PercentageOVotesWithParty { get; set; }
         public string YoutubeAccount { get; set; }
     }
 }

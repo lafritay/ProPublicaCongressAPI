@@ -30,9 +30,9 @@ namespace ProPublicaCongressAPI.Contracts
 
         public int BillCosponsoredCount { get; set; }
 
-        public double MissedVotesPercentage { get; set; }
+        public double? MissedVotesPercentage { get; set; }
 
-        public double VotesWithPartyPercentage { get; set; }
+        public double? VotesWithPartyPercentage { get; set; }
 
         public IReadOnlyCollection<MemberCommittee> Committees { get; set; }
     }

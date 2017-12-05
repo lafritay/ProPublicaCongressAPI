@@ -43,10 +43,10 @@ namespace ProPublicaCongressAPI.InternalModels
         public int BillCosponsoredCount { get; set; }
 
         [JsonProperty("missed_votes_pct")]
-        public double MissedVotesPercentage { get; set; }
+        public double? MissedVotesPercentage { get; set; }
 
         [JsonProperty("votes_with_party_pct")]
-        public double VotesWithPartyPercentage { get; set; }
+        public double? VotesWithPartyPercentage { get; set; }
 
         [JsonProperty("committees")]
         public IReadOnlyCollection<MemberCommittee> Committees { get; set; }
