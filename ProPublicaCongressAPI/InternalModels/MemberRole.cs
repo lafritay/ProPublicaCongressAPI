@@ -34,7 +34,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public DateTime StartDate { get; set; }
 
         [JsonProperty("end_date")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [JsonProperty("bills_sponsored")]
         public int BillSponsoredCount { get; set; }
