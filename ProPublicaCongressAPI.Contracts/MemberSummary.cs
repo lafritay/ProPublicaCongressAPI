@@ -9,7 +9,7 @@ namespace ProPublicaCongressAPI.Contracts
         public string MemberDetailUrl { get; set; }
         public string ContactForm { get; set; }
         public string CrpId { get; set; }
-        public int CspanId { get; set; }
+        public int? CspanId { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

@@ -31,7 +31,7 @@ namespace ProPublicaCongressAPI.Contracts
 
         public int GovTrackId { get; set; }
 
-        public int CspanId { get; set; }
+        public int? CspanId { get; set; }
 
         public int? IcpsrId { get; set; }
 

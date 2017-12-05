@@ -18,7 +18,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public string CrpId { get; set; }
 
         [JsonProperty("cspan_id")]
-        public int CspanId { get; set; }
+        public int? CspanId { get; set; }
 
         [JsonProperty("date_of_birth")]
         public DateTime DateOfBirth { get; set; }

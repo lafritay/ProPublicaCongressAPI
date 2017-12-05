@@ -40,7 +40,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public int GovTrackId { get; set; }
 
         [JsonProperty("cspan_id")]
-        public int CspanId { get; set; }
+        public int? CspanId { get; set; }
 
         [JsonProperty("icpsr_id")]
         public int? IcpsrId { get; set; }
