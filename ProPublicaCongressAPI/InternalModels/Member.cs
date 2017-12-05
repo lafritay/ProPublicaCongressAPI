@@ -67,7 +67,7 @@ namespace ProPublicaCongressAPI.InternalModels
         public string CurrentParty { get; set; }
 
         [JsonProperty("most_recent_vote")]
-        public DateTime MostRecentVoteDate { get; set; }
+        public DateTime? MostRecentVoteDate { get; set; }
 
         [JsonProperty("roles")]
         public IReadOnlyCollection<MemberRole> Roles { get; set; }

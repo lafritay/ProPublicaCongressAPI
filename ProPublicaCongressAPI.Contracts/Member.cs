@@ -52,7 +52,7 @@ namespace ProPublicaCongressAPI.Contracts
 
         public string CurrentParty { get; set; }
 
-        public DateTime MostRecentVoteDate { get; set; }
+        public DateTime? MostRecentVoteDate { get; set; }
 
         public IReadOnlyCollection<MemberRole> Roles { get; set; }
         
